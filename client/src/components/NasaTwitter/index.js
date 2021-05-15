@@ -6,7 +6,7 @@ class NasaTwitter extends Component {
         const script = document.createElement('script')
         script.src = 'https://platform.twitter.com/widgets.js'
         script.async = true
-        document.body.appendChild(scipt)
+        document.body.appendChild(script)
     }
 
     render() {
@@ -19,3 +19,5 @@ class NasaTwitter extends Component {
         </a> 
     }
 }
+
+export default NasaTwitter;
