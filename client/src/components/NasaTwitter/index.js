@@ -10,13 +10,16 @@ class NasaTwitter extends Component {
     }
 
     render() {
-        <a class="twitter-timeline" 
-            href="https://twitter.com/NASA?ref_src=twsrc%5Etfw"
-            data-width="400"
-            data-height="800"
-            data-theme='dark'>
-            Tweets by NASA
-        </a> 
+        return (
+            <a class="twitter-timeline" 
+                href="https://twitter.com/NASA?ref_src=twsrc%5Etfw"
+                data-width="400"
+                data-height="800"
+                data-theme='dark'>
+                Tweets by NASA
+            </a> 
+        )
+        
     }
 }
 
