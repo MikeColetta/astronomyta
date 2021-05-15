@@ -4,36 +4,39 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import logo from "./logo.svg";
 import "./App.css";
-import Jumbotron from "react-bootstrap/Jumbotron";
 import Navbar from "react-bootstrap/Navbar";
-// import Container from 'react-bootstrap/Container';
-// import ListGroup from 'react-bootstrap/ListGroup';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
-// import Card from 'react-bootstrap/Card';
-// import Image from 'react-bootstrap/Image'
 import Homepage from "./pages/Homepage";
 import Profile from "./pages/Profile";
 import Stars from "./pages/Stars";
-import Topic1 from "./pages/Stars";
-import Topic2 from "./pages/Topics2";
-import Topic3 from "./pages/Topics3";
+import Planets from "./pages/Planets";
+import Comets from "./pages/Comets";
+import Asteroids from './pages/Asteroids';
+import NoMatch from "./pages/NoMatch";
+import Nav from 'react-bootstrap/Nav';
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App">
-          <Navbar />
-          <Jumbotron />
+                <Navbar bg="dark" variant="dark">
+                    <Navbar.Brand href="/">North Star</Navbar.Brand>
+                    <Nav className="mr-auto">
+                        <Nav.Link href="/comets">Comets</Nav.Link>
+                        <Nav.Link href="/asteroids">Asteroids</Nav.Link>
+                        <Nav.Link href="/planets">Planets</Nav.Link>
+                        <Nav.Link href="/stars">Stars</Nav.Link>
+                        <Nav.Link href="/profile">Profile</Nav.Link>
+                    </Nav>
+                </Navbar>
           <Switch>
-            <Route exact path="/" componenet={Homepage} />
-            <Route exact path="/profile" componenet={Profile} />
-            <Route exact path="/stars" componenet={Stars} />
-            <Route exact path="/topic2" componenet={Topic2} />
-            <Route exact path="/topic1" componenet={Topic1} />
-            <Route exact path="/topic3" componenet={Topic3} />
-            <Route componenet={NoMatch} />
+            <Route exact path="/" component={Homepage} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/stars" component={Stars} />
+            <Route exact path="/comets" component={Comets} />
+            <Route exact path="/asteroids" component={Asteroids} />
+            <Route exact path="/planets" component={Planets} />
+            <Route component={NoMatch} />
           </Switch>
         </div>
       </Router>

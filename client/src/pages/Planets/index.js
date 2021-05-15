@@ -6,28 +6,25 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
-function Stars() {
+function Planets() {
     return (
         <div>
-            <div>
-                <Navbar bg="light">
-                    <Navbar.Brand href="#home">Brand link</Navbar.Brand>
-                </Navbar>
-            </div>
             <Container>
                 <Row>
                     <Card>
-                        <h1>Stars</h1>
+                        <h1>Planets</h1>
                     </Card>
                 </Row>
                 <Row>
                     <Card>
                         <p>
-                        Stars are the most widely recognized astronomical objects, and represent the most fundamental building blocks of galaxies. 
-                        The age, distribution, and composition of the stars in a galaxy trace the history, dynamics, and evolution of that galaxy. 
-                        Moreover, stars are responsible for the manufacture and distribution of heavy elements such as carbon, nitrogen, and oxygen, 
-                        and their characteristics are intimately tied to the characteristics of the planetary systems that may coalesce about them. 
-                        Consequently, the study of the birth, life, and death of stars is central to the field of astronomy.
+                            There are more planets than stars in our galaxy. The current count orbiting our star: eight.
+
+                            The inner, rocky planets are Mercury, Venus, Earth and Mars. NASA's newest rover — Perseverance — landed on Mars on Feb. 18, 2021.
+                            The outer planets are gas giants Jupiter and Saturn and ice giants Uranus and Neptune.
+
+                            Beyond Neptune, a newer class of smaller worlds called dwarf planets reign, including longtime favorite Pluto.
+                            Thousands more planets have been discovered beyond our solar system. Scientists call them exoplanets (exo means "from outside.")
                         </p>
                     </Card>
                 </Row>
@@ -55,4 +52,4 @@ function Stars() {
 }
 
 
-export default Stars;
+export default Planets;
