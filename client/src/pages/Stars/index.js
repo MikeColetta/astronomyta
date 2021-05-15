@@ -1,31 +1,32 @@
 import React from "react"
-import Jumbotron from 'react-bootstrap/Jumbotron';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import "./homepage.css" 
+import Nav from 'react-bootstrap/Nav';
 
-function Homepage() {
+function Stars() {
     return (
         <div>
-            <div>
-                <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand href="#home">North Star</Navbar.Brand>
-                    <Nav className="mr-auto">
-                        <Nav.Link href="#BlackHoles">Black Holes</Nav.Link>
-                        <Nav.Link href="#Asteroids">Asteroids</Nav.Link>
-                        <Nav.Link href="#Planets">Planets</Nav.Link>
-                        <Nav.Link href="#Stars">Stars</Nav.Link>
-                    </Nav>
-                </Navbar>
-            </div>
-            <Jumbotron>
-                <Image src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.jpl.nasa.gov%2Fedu%2Fnews%2F2020%2F1%2F23%2Fnasa-says-goodbye-to-space-telescope-mission-that-revealed-a-hidden-universe%2F&psig=AOvVaw2eVOGyj7nCe0ZkWvWpdNKn&ust=1621051914756000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOiUu46nyPACFQAAAAAdAAAAABAD" fluid />
-            </Jumbotron>
             <Container>
+                <Row>
+                    <Card>
+                        <h1>Stars</h1>
+                    </Card>
+                </Row>
+                <Row>
+                    <Card>
+                        <p>
+                        Stars are the most widely recognized astronomical objects, and represent the most fundamental building blocks of galaxies. 
+                        The age, distribution, and composition of the stars in a galaxy trace the history, dynamics, and evolution of that galaxy. 
+                        Moreover, stars are responsible for the manufacture and distribution of heavy elements such as carbon, nitrogen, and oxygen, 
+                        and their characteristics are intimately tied to the characteristics of the planetary systems that may coalesce about them. 
+                        Consequently, the study of the birth, life, and death of stars is central to the field of astronomy.
+                        </p>
+                    </Card>
+                </Row>
                 <Row>
                     <Col>
                         <Card>
@@ -49,4 +50,5 @@ function Homepage() {
     )
 }
 
-export default Homepage;
+
+export default Stars;
