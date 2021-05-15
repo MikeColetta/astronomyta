@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import "./homepage.css" 
 
-function HomePage() {
+function Homepage() {
     return (
         <div>
             <div>
@@ -42,3 +42,5 @@ function HomePage() {
         </div>
     )
 }
+
+export default Homepage;
