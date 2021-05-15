@@ -6,13 +6,20 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import "./homepage.css" 
 
 function Homepage() {
     return (
         <div>
             <div>
-                <Navbar bg="light">
-                    <Navbar.Brand href="#home">Brand link</Navbar.Brand>
+                <Navbar bg="dark" variant="dark">
+                    <Navbar.Brand href="#home">North Star</Navbar.Brand>
+                    <Nav className="mr-auto">
+                        <Nav.Link href="#BlackHoles">Black Holes</Nav.Link>
+                        <Nav.Link href="#Asteroids">Asteroids</Nav.Link>
+                        <Nav.Link href="#Planets">Planets</Nav.Link>
+                        <Nav.Link href="#Stars">Stars</Nav.Link>
+                    </Nav>
                 </Navbar>
             </div>
             <Jumbotron>
