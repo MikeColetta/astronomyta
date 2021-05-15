@@ -6,12 +6,13 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import "./homepage.css" 
 
 function HomePage() {
     return (
         <div>
             <div>
-                <Navbar bg="light">
+                <Navbar bg="dark">
                     <Navbar.Brand href="#home">Brand link</Navbar.Brand>
                 </Navbar>
             </div>
