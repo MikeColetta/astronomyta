@@ -6,6 +6,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import NasaTwitter from '../../components/NasaTwitter'
 
 function Homepage() {
     return (
@@ -14,6 +15,9 @@ function Homepage() {
                 <span>Image goes here</span>
             </Jumbotron>
             <Container>
+                <Row>
+                    <NasaTwitter />
+                </Row>
                 <Row>
                     <Col>
                         <Card>

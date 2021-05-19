@@ -6,16 +6,21 @@ class NasaTwitter extends Component {
         const script = document.createElement('script')
         script.src = 'https://platform.twitter.com/widgets.js'
         script.async = true
-        document.body.appendChild(scipt)
+        document.body.appendChild(script)
     }
 
     render() {
-        <a class="twitter-timeline" 
-            href="https://twitter.com/NASA?ref_src=twsrc%5Etfw"
-            data-width="400"
-            data-height="800"
-            data-theme='dark'>
-            Tweets by NASA
-        </a> 
+        return (
+            <a class="twitter-timeline" 
+                href="https://twitter.com/NASA?ref_src=twsrc%5Etfw"
+                data-width="400"
+                data-height="800"
+                data-theme='dark'>
+                Tweets by NASA
+            </a> 
+        )
+        
     }
 }
+
+export default NasaTwitter;
