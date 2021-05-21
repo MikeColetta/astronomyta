@@ -10,6 +10,7 @@ import Planets from "./pages/Planets";
 import Comets from "./pages/Comets";
 import Asteroids from './pages/Asteroids';
 import NoMatch from "./pages/NoMatch";
+import Login from './pages/Login'
 import Nav from 'react-bootstrap/Nav';
 require('dotenv').config()
 
@@ -26,6 +27,7 @@ class App extends Component {
                         <Nav.Link href="/planets">Planets</Nav.Link>
                         <Nav.Link href="/stars">Stars</Nav.Link>
                         <Nav.Link href="/profile">Profile</Nav.Link>
+                        <Nav.Link href='/login'>Login</Nav.Link>
                     </Nav>
                 </Navbar>
           <Switch>
@@ -35,6 +37,7 @@ class App extends Component {
             <Route exact path="/comets" component={Comets} />
             <Route exact path="/asteroids" component={Asteroids} />
             <Route exact path="/planets" component={Planets} />
+            <Route exact path='/login' component={Login}></Route>
             <Route component={NoMatch} />
           </Switch>
         </div>
