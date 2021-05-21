@@ -1,6 +1,5 @@
 import React from "react"
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
