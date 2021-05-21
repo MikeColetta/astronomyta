@@ -1,6 +1,6 @@
 import axios from 'axios';
 require('dotenv').config()
-const { REACT_APP_NASA_API } = process.env;
+const { REACT_APP_NASA_API, REACT_APP_YOUTUBE_API_KEY } = process.env;
 
 
 export default {
@@ -20,6 +20,9 @@ export default {
     getNASAComets: function() {
         return axios.get(`https://images-api.nasa.gov/search?q=comets`)
     },
+    getYouTubeNASA: function() {
+        return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=nasa&type=video&key=${ REACT_APP_YOUTUBE_API_KEY }`)
+        
+    }
 }
 
-const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
