@@ -1,8 +1,6 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "react-bootstrap/Navbar";
 import Homepage from "./pages/Homepage";
@@ -13,6 +11,7 @@ import Comets from "./pages/Comets";
 import Asteroids from './pages/Asteroids';
 import NoMatch from "./pages/NoMatch";
 import Nav from 'react-bootstrap/Nav';
+require('dotenv').config()
 
 class App extends Component {
   render() {
