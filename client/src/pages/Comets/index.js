@@ -1,11 +1,18 @@
-import React from "react"
+import React, { useState } from "react"
 import Container from 'react-bootstrap/Container';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import API from '../../utils/API';
 
 function Comets() {
+    const [cometPhotos, setCometPhotos] = useState();
+
+    API.getNASAComets()
+    .then(res => console.log(res))
+    .catch(err => console.error(err))
+    
     return (
         <div>
             <Container>
