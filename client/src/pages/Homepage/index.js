@@ -23,9 +23,6 @@ function Homepage() {
             </Jumbotron>
             <Container>
                 <Row>
-                    <NasaTwitter />
-                </Row>
-                <Row>
                     <Col>
                         <Card>
                             <ListGroup>
@@ -40,6 +37,11 @@ function Homepage() {
                                 <ListGroup.Item>This is the first row!</ListGroup.Item>
                                 <ListGroup.Item>This is the second row!</ListGroup.Item>
                             </ListGroup>
+                        </Card>
+                    </Col>
+                    <Col>
+                        <Card>
+                            <NasaTwitter />
                         </Card>
                     </Col>
                 </Row>
