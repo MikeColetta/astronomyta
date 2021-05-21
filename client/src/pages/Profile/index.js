@@ -5,6 +5,8 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 function Profile() {
     return (
@@ -13,24 +15,21 @@ function Profile() {
                 <span>Image goes here</span>
             </Jumbotron>
             <Container>
+
                 <Row>
-                    <Col>
-                        <Card>
-                            <ListGroup>
-                                <ListGroup.Item>This is the first row!</ListGroup.Item>
-                                <ListGroup.Item>This is the second row!</ListGroup.Item>
-                            </ListGroup>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Card>
-                            <ListGroup>
-                                <ListGroup.Item>This is the first row!</ListGroup.Item>
-                                <ListGroup.Item>This is the second row!</ListGroup.Item>
-                            </ListGroup>
-                        </Card>
-                    </Col>
+                    <Card>
+                        <Card.Header>Recently Liked Videos</Card.Header>
+                    </Card>
                 </Row>
+
+                <Row>
+                    <Card>
+                        <Card.Header>Recently Liked Images</Card.Header>
+                    </Card>
+                </Row>
+                
+                        
+
             </Container>
         </div>
     )
