@@ -8,12 +8,18 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import NasaTwitter from '../../components/NasaTwitter'
 import API from '../../utils/API';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 
 function Homepage() {
     const [apod, setApod] = useState();
+    const [nasaYT, setYouTube] = useState();
 
     API.getNASAAPOD()
     .then(res => setApod(res.data.hdurl))
+    .catch(err => console.error(err))
+    
+    API.getYouTubeNASA()
+    .then(res => setYouTube(res.data.hdurl))
     .catch(err => console.error(err))
 
     return (
@@ -26,8 +32,8 @@ function Homepage() {
                     <Col>
                         <Card>
                             <ListGroup>
-                                <ListGroup.Item>This is the first row!</ListGroup.Item>
-                                <ListGroup.Item>This is the second row!</ListGroup.Item>
+                                <ListGroup.Item className="thumbnail" style={{video: 'url(' + nasaYT + ')'}}> </ListGroup.Item>
+                                
                             </ListGroup>
                         </Card>
                     </Col>
