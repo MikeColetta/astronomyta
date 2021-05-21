@@ -1,0 +1,10 @@
+.jumbotronStyle {
+    height:50vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+.homepageHeader {
+    color: white;
+}
