@@ -24,6 +24,18 @@ export default {
     getYouTubeNASA: function() {
         return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=nasa&type=video&key=${ REACT_APP_YOUTUBE_API_KEY }`)
         
-    }
+    },
+    getYouTubeComets: function() {
+        return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=comets&type=video&key=${ REACT_APP_YOUTUBE_API_KEY }`)
+    },
+    getYouTubeAstroids: function() {
+        return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=astroids&type=video&key=${ REACT_APP_YOUTUBE_API_KEY }`)
+    },
+    getYouTubePlanets: function() {
+        return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=planets&type=video&key=${ REACT_APP_YOUTUBE_API_KEY }`)
+    },
+    getYouTubeStars: function() {
+        return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=stars&type=video&key=${ REACT_APP_YOUTUBE_API_KEY }`)
+    },    
 }
 

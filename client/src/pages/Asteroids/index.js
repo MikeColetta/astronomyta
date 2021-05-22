@@ -8,6 +8,13 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import asteroidPhoto from '../../assets/images/AsteroidIda.jpg';
 
 function Asteroids() {
+
+  const [astroidsYT, setYouTube] = useState();
+
+  API.getYouTubeAstroids()
+  .then(res => setYouTube(res.data.hdurl))
+  .catch(err => console.error(err))
+
   return (
     <div>
       <Jumbotron
@@ -41,7 +48,8 @@ function Asteroids() {
           <Col>
             <Card>
               <ListGroup>
-                <ListGroup.Item>This is the first row!</ListGroup.Item>
+              <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + astroidsYT + ')' }}> </ListGroup.Item>
+
                 <ListGroup.Item>This is the second row!</ListGroup.Item>
               </ListGroup>
             </Card>
