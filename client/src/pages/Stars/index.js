@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import starPhoto from '../../assets/images/TabbysStar.jpg';
+import API from '../../utils/API';
 
 function Stars() {
 
