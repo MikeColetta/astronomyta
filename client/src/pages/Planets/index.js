@@ -5,16 +5,16 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import PlanetsImg from "../../Images/PlanetsImg.jpg";
+import planetPhoto from '../../assets/images/Neptune.jpg';
 
 function Planets() {
   return (
     <div>
       <Jumbotron
         className="jumbotronStyle"
-        style={{ backgroundImage: PlanetsImg }}
+        style={{ backgroundImage: `url(${planetPhoto})` }}
       >
-        <h1 className="homepageHeader">North Star!</h1>
+        <h1 className="homepageHeader">Planets</h1>
       </Jumbotron>
       <Container>
         <Row>

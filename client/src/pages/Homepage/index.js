@@ -8,7 +8,6 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import NasaTwitter from '../../components/NasaTwitter'
 import API from '../../utils/API';
-import Jumbotron from 'react-bootstrap/Jumbotron';
 
 function Homepage() {
     const [apod, setApod] = useState();
