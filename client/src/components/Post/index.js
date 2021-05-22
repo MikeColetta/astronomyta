@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from React
+import React, {useState, useEffect} from 'react'
 import { Card, Button } from 'react-bootstrap'
 import Comment from '../Comment'
+import API from '../../utils/API'
 
 function Post(props) {
 
