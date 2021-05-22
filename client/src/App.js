@@ -29,7 +29,6 @@ class App extends Component {
                           <NavDropdown.Item href="/planets">Planets</NavDropdown.Item>
                           <NavDropdown.Item href="/stars">Stars</NavDropdown.Item>
                           <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
-                          <NavDropdown.Item href='/login'>Login</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Nav>
