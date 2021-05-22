@@ -12,6 +12,7 @@ import Asteroids from './pages/Asteroids';
 import NoMatch from "./pages/NoMatch";
 import Login from './pages/Login'
 import Nav from 'react-bootstrap/Nav';
+import { NavDropdown } from "react-bootstrap";
 require('dotenv').config()
 
 class App extends Component {
@@ -22,12 +23,20 @@ class App extends Component {
                 <Navbar bg="dark" variant="dark">
                     <Navbar.Brand href="/">North Star</Navbar.Brand>
                     <Nav className="mr-auto">
-                        <Nav.Link href="/comets">Comets</Nav.Link>
+                        <NavDropdown title='Resources'>
+                          <NavDropdown.Item href="/comets">Comets</NavDropdown.Item>
+                          <NavDropdown.Item href="/asteroids">Asteroids</NavDropdown.Item>
+                          <NavDropdown.Item href="/planets">Planets</NavDropdown.Item>
+                          <NavDropdown.Item href="/stars">Stars</NavDropdown.Item>
+                          <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                          <NavDropdown.Item href='/login'>Login</NavDropdown.Item>
+                        </NavDropdown>
+                        {/* <Nav.Link href="/comets">Comets</Nav.Link>
                         <Nav.Link href="/asteroids">Asteroids</Nav.Link>
                         <Nav.Link href="/planets">Planets</Nav.Link>
                         <Nav.Link href="/stars">Stars</Nav.Link>
-                        <Nav.Link href="/profile">Profile</Nav.Link>
-                        <Nav.Link href='/login'>Login</Nav.Link>
+                        <Nav.Link href="/profile">Profile</Nav.Link> */}
+                        <Nav.Link className='navbar-right' href='/login'>Login</Nav.Link>
                     </Nav>
                 </Navbar>
           <Switch>
