@@ -38,17 +38,16 @@ function Homepage() {
     }
 
     return (
-        <div>
-            <Jumbotron className="jumbotronStyle" style={{ backgroundImage: 'url(' + apod + ')' }}>
+        <div className="pageStyle">
+            <Jumbotron className="jumbotronStyle" style={{backgroundImage: 'url(' + apod + ')'}}>
                 <h1 className="homepageHeader">North Star!</h1>
             </Jumbotron>
-            <Container>
+            <Container className="containerStyle">
                 <Row>
                     <Col>
                         <Card>
                             <ListGroup>
-                                <ListGroup.Item className="thumbnail" style={{ video: 'url(' + nasaYT + ')' }}> </ListGroup.Item>
-
+                                <ListGroup.Item className="thumbnail, listStyle" style={{video: 'url(' + nasaYT + ')'}}> </ListGroup.Item
                             </ListGroup>
                         </Card>
                     </Col>
@@ -58,6 +57,7 @@ function Homepage() {
                                 {nasaPhotos.map((photo) => {
                                     return <Post props={photo}></Post>
                                 })}
+
                             </ListGroup>
                         </Card>
                     </Col>
