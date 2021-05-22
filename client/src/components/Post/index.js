@@ -4,12 +4,11 @@ import Comment from '../Comment'
 import API from '../../utils/API'
 
 function Post(props) {
-
+        
     const [likes, setLikes] = useState()
 
-    useEffect(() => {
-        setLikes()
-    })
+     useEffect(() => {      
+    },[])
 
     function onLike() {
         setLikes(likes + 1)
@@ -19,21 +18,24 @@ function Post(props) {
     }
 
     // Check content type
-    if (props.imageLink) {
-        content = <img ref={props.imageLink}></img>
+
+    let content
+    if (props.props.imageLink) {
+        content = <img src={props.props.imageLink}></img>
     }
-    else if (props.videoLink) {
-        content = <iframe src={props.videoLink} id="video_player" width="420" height="315" webkit-playsinline="true"
+    else if (props.props.videoLink) {
+        content = <iframe src={props.props.videoLink} id="video_player" width="420" height="315" webkit-playsinline="true"
         playsinline="true"></iframe>
     } else {
-        conte = <div></div>
+        content = <div></div>
     }
 
     // Check for comment
-    if (props.comments) {
+    let comments
+    if (props.props.comments) {
         comments = <div>
             {props.comments.map((comment) => {
-                    <Comment props={comment}></Comment>
+                    return (<Comment props={comment}></Comment>)
                 })}
         </div>
     } else {
@@ -42,9 +44,9 @@ function Post(props) {
 
     return (
         <Card>
-            <Card.Header>{props.title}</Card.Header>
+            <Card.Header>{props.props.title}</Card.Header>
             <Card.Body>
-                <Card.Text className='text-muted'>{props.date}</Card.Text>
+                <Card.Text className='text-muted'>{props.props.date}</Card.Text>
                 {content}
                 {comments}
                 <Card.Text>{props.likes}</Card.Text>
