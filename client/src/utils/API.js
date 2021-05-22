@@ -1,6 +1,7 @@
 import axios from 'axios';
 require('dotenv').config()
-const { REACT_APP_NASA_API, REACT_APP_YOUTUBE_API_KEY } = process.env;
+const REACT_APP_NASA_API = process.env.REACT_APP_NASA_API;
+const REACT_APP_YOUTUBE_API_KEY =process.env.REACT_APP_YOUTUBE_API_KEY;
 
 
 export default {
