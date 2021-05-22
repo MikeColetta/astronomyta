@@ -1,5 +1,4 @@
-import { useEffect } from "react"
-import React, { useState, useEffect } from React
+import React, { useState, useEffect } from 'react'
 import Card from 'react-bootstrap'
 
 function Comment(props) {
