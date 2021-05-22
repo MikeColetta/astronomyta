@@ -8,6 +8,13 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import planetPhoto from '../../assets/images/Neptune.jpg';
 
 function Planets() {
+
+  const [planetsYT, setYouTube] = useState();
+
+  API.getYouTubePlanets()
+    .then(res => setYouTube(res.data.hdurl))
+    .catch(err => console.error(err))
+
   return (
     <div>
       <Jumbotron
@@ -41,7 +48,8 @@ function Planets() {
           <Col>
             <Card>
               <ListGroup>
-                <ListGroup.Item>This is the first row!</ListGroup.Item>
+              <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + planetsYT + ')' }}> </ListGroup.Item>
+
                 <ListGroup.Item>This is the second row!</ListGroup.Item>
               </ListGroup>
             </Card>

@@ -8,6 +8,13 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import starPhoto from '../../assets/images/TabbysStar.jpg';
 
 function Stars() {
+
+  const [starsYT, setYouTube] = useState();
+
+  API.getYouTubeStars()
+    .then(res => setYouTube(res.data.hdurl))
+    .catch(err => console.error(err))
+
   return (
     <div>
       <Jumbotron
@@ -42,7 +49,8 @@ function Stars() {
           <Col>
             <Card>
               <ListGroup>
-                <ListGroup.Item>This is the first row!</ListGroup.Item>
+              <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + starsYT + ')' }}> </ListGroup.Item>
+
                 <ListGroup.Item>This is the second row!</ListGroup.Item>
               </ListGroup>
             </Card>
