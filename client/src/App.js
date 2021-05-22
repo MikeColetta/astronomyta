@@ -31,12 +31,9 @@ class App extends Component {
                           <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                           <NavDropdown.Item href='/login'>Login</NavDropdown.Item>
                         </NavDropdown>
-                        {/* <Nav.Link href="/comets">Comets</Nav.Link>
-                        <Nav.Link href="/asteroids">Asteroids</Nav.Link>
-                        <Nav.Link href="/planets">Planets</Nav.Link>
-                        <Nav.Link href="/stars">Stars</Nav.Link>
-                        <Nav.Link href="/profile">Profile</Nav.Link> */}
-                        <Nav.Link className='navbar-right' href='/login'>Login</Nav.Link>
+                    </Nav>
+                    <Nav>
+                      <Nav.Link fixed='right' href='/login'>Login</Nav.Link>
                     </Nav>
                 </Navbar>
           <Switch>
