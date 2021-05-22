@@ -9,10 +9,10 @@ import starPhoto from '../../assets/images/TabbysStar.jpg';
 
 function Stars() {
 
-  const [starsYT, setYouTube] = useState();
+  const [starsYT, setStarsYT] = useState();
 
   API.getYouTubeStars()
-    .then(res => setYouTube(res.data.hdurl))
+    .then(res => setStarsYT(res.data.hdurl))
     .catch(err => console.error(err))
 
   return (

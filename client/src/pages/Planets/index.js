@@ -9,10 +9,10 @@ import planetPhoto from '../../assets/images/Neptune.jpg';
 
 function Planets() {
 
-  const [planetsYT, setYouTube] = useState();
+  const [planetsYT, setPlanetsYT] = useState();
 
   API.getYouTubePlanets()
-    .then(res => setYouTube(res.data.hdurl))
+    .then(res => setPlanetsYT(res.data.hdurl))
     .catch(err => console.error(err))
 
   return (

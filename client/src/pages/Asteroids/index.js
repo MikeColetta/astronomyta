@@ -9,10 +9,10 @@ import asteroidPhoto from '../../assets/images/AsteroidIda.jpg';
 
 function Asteroids() {
 
-  const [astroidsYT, setYouTube] = useState();
+  const [astroidsYT, setAstroidsYT] = useState();
 
   API.getYouTubeAstroids()
-  .then(res => setYouTube(res.data.hdurl))
+  .then(res => setAstroidsYT(res.data.hdurl))
   .catch(err => console.error(err))
 
   return (

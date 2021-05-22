@@ -9,11 +9,11 @@ import cometPhoto from '../../assets/images/CometNeowise.jpg';
 
 function Comets() {
 
-  const [cometYT, setYouTube] = useState();
+  const [cometYT, setCometsYT] = useState();
 
   API.getYouTubeComets()
-  .then(res => setYouTube(res.data.hdurl))
-  .catch(err => console.error(err))
+    .then(res => setCometsYT(res.data.hdurl))
+    .catch(err => console.error(err))
   return (
     <div>
       <Jumbotron
@@ -45,10 +45,10 @@ function Comets() {
         <Row>
           <Col>
             <Card>
-            <ListGroup>
-                                <ListGroup.Item className="thumbnail" style={{iframe: 'url(' + cometYT + ')'}}> </ListGroup.Item>
-                                
-                            </ListGroup>
+              <ListGroup>
+                <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + cometYT + ')' }}> </ListGroup.Item>
+
+              </ListGroup>
             </Card>
           </Col>
           <Col>
