@@ -17,6 +17,7 @@ function Post(props) {
             .catch(err => console.log(err))
     }
 
+    // Check content type
     if (props.imageLink) {
         content = <img ref={props.imageLink}></img>
     }
@@ -27,6 +28,17 @@ function Post(props) {
         conte = <div></div>
     }
 
+    // Check for comment
+    if (props.comment) {
+        comments = <div>
+            {props.comments.map((comment) => {
+                    <Comment props={comment}></Comment>
+                })}
+        </div>
+    } else {
+        comments = <div></div>
+    }
+
     return (
         <Card>
             <Card.Header>{props.title}</Card.Header>
@@ -35,9 +47,7 @@ function Post(props) {
                 {content}
                 <Card.Text>{props.likes}</Card.Text>
                 <Button variant='primary' onClick={() => onLike()}>Like</Button>
-                {props.comments.map((comment) => {
-                    <Comment props={comment}></Comment>
-                })}
+                
             </Card.Body>
         </Card>
     )
