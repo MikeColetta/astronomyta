@@ -47,7 +47,7 @@ function Homepage() {
                     <Col>
                         <Card>
                             <ListGroup>
-                                <ListGroup.Item className="thumbnail, listStyle" style={{video: 'url(' + nasaYT + ')'}}> </ListGroup.Item
+                                <ListGroup.Item className="thumbnail, listStyle" style={{video: 'url(' + nasaYT + ')'}}> </ListGroup.Item>
                             </ListGroup>
                         </Card>
                     </Col>
