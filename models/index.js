@@ -1,7 +1,7 @@
-const Users = require('./Users');
 
+module.exports = {
+    CommentModel: require('./Comment'),
+    PostModel: require('./Post'),
+    User: require('./users')
+}
 
-
-
-
-module.exports = { User };

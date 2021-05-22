@@ -29,7 +29,7 @@ function Post(props) {
     }
 
     // Check for comment
-    if (props.comment) {
+    if (props.comments) {
         comments = <div>
             {props.comments.map((comment) => {
                     <Comment props={comment}></Comment>
@@ -45,6 +45,7 @@ function Post(props) {
             <Card.Body>
                 <Card.Text className='text-muted'>{props.date}</Card.Text>
                 {content}
+                {comments}
                 <Card.Text>{props.likes}</Card.Text>
                 <Button variant='primary' onClick={() => onLike()}>Like</Button>
                 
