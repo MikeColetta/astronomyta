@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react"
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
@@ -6,13 +6,14 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import starPhoto from '../../assets/images/TabbysStar.jpg';
+import API from '../../utils/API';
 
 function Stars() {
 
-  const [starsYT, setYouTube] = useState();
+  const [starsYT, setStarsYT] = useState();
 
   API.getYouTubeStars()
-    .then(res => setYouTube(res.data.hdurl))
+    .then(res => setStarsYT(res.data.hdurl))
     .catch(err => console.error(err))
 
   return (

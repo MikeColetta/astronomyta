@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react"
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
@@ -6,14 +6,15 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import cometPhoto from '../../assets/images/CometNeowise.jpg';
+import API from '../../utils/API';
 
 function Comets() {
 
-  const [cometYT, setYouTube] = useState();
+  const [cometYT, setCometsYT] = useState();
 
   API.getYouTubeComets()
-  .then(res => setYouTube(res.data.hdurl))
-  .catch(err => console.error(err))
+    .then(res => setCometsYT(res.data.hdurl))
+    .catch(err => console.error(err))
   return (
     <div>
       <Jumbotron
@@ -45,10 +46,10 @@ function Comets() {
         <Row>
           <Col>
             <Card>
-            <ListGroup>
-                                <ListGroup.Item className="thumbnail" style={{iframe: 'url(' + cometYT + ')'}}> </ListGroup.Item>
-                                
-                            </ListGroup>
+              <ListGroup>
+                <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + cometYT + ')' }}> </ListGroup.Item>
+
+              </ListGroup>
             </Card>
           </Col>
           <Col>
