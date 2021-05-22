@@ -22,16 +22,16 @@ function Homepage() {
     .catch(err => console.error(err))
 
     return (
-        <div>
+        <div className="pageStyle">
             <Jumbotron className="jumbotronStyle" style={{backgroundImage: 'url(' + apod + ')'}}>
                 <h1 className="homepageHeader">North Star!</h1>
             </Jumbotron>
-            <Container>
+            <Container className="containerStyle">
                 <Row>
                     <Col>
                         <Card>
                             <ListGroup>
-                                <ListGroup.Item className="thumbnail" style={{video: 'url(' + nasaYT + ')'}}> </ListGroup.Item>
+                                <ListGroup.Item className="thumbnail, listStyle" style={{video: 'url(' + nasaYT + ')'}}> </ListGroup.Item>
                                 
                             </ListGroup>
                         </Card>
@@ -39,8 +39,8 @@ function Homepage() {
                     <Col>
                         <Card>
                             <ListGroup>
-                                <ListGroup.Item>This is the first row!</ListGroup.Item>
-                                <ListGroup.Item>This is the second row!</ListGroup.Item>
+                                <ListGroup.Item className="listStyle">This is the first row!</ListGroup.Item>
+                                <ListGroup.Item className="listStyle">This is the second row!</ListGroup.Item>
                             </ListGroup>
                         </Card>
                     </Col>
