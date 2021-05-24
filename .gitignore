@@ -1,3 +1,6 @@
 node_modules
 .DS_Store
 .env
+
+# visual studio code custom file
+.vscode
