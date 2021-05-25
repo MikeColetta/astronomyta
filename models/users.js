@@ -16,16 +16,12 @@ const userSchema = new Schema({
         type: String,
         allowNull: false,
         unique: true,
-        validate: {
-          isEmail: true,
-        },
+        isEmail: true,
       },
       password: {
         type: String,
         allowNull: false,
-        validate: {
-          minLen: [8],
-        },
+        minLength:[8, 'Password too short!'],
       },
 });
 
