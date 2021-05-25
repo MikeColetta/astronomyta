@@ -1,10 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-require('dotenv').config()
+import AuthService from './utils/auth_service';
+require('dotenv').config();
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const authService = new AuthService();
+
+ReactDOM.render(
+  <App authService={authService} />,
+  document.getElementById('root')
+);
 registerServiceWorker();
