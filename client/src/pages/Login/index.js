@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Loginpic from '../../assets/images/Loginpic.jpg';
 
 function Profile({ authService }) {
   const onLogin = (event) => {
@@ -27,9 +28,10 @@ function Profile({ authService }) {
           </ul>
         </section>
       </section>
-      <Jumbotron>
-        <span>Image goes here</span>
-      </Jumbotron>
+      <Jumbotron
+      className="jumbotronStyle"
+        style={{ backgroundImage: `url(${Loginpic})` }}
+      />
       <Container>
         <Row>
           <Card className='m-3' style={{ width: '25rem' }}>
