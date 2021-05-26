@@ -14,7 +14,7 @@ import { createYoutubePost, createPost } from '../../utils/pageHelper'
 
 function Planets() {
   const [planetPhotos, setPlanetPhotos] = useState([]);
-  const [planetsYT, setPlanetsYT] = useState();
+  const [planetsYT, setPlanetsYT] = useState([]);
 
   useEffect(() => {
     API.getNASAPlanets()
@@ -22,7 +22,11 @@ function Planets() {
       .catch(err => console.error(err))
 
     API.getYouTubePlanets()
-      .then(res => setPlanetsYT(res.data.items.map(post => createYoutubePost(post))))
+      .then(res => {
+        setPlanetsYT(res.data.items.map(post => createYoutubePost(post)))
+        console.log('\n\n\n\nRESPONSE');
+        console.log(res);
+      })
       .catch(err => console.error(err))
   }, [])
 

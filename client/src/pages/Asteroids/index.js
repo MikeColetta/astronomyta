@@ -13,7 +13,7 @@ import { createYoutubePost, createPost } from '../../utils/pageHelper'
 
 function Asteroids() {
   const [asteroidPhotos, setAsteroidPhotos] = useState([]);
-  const [astroidsYT, setAstroidsYT] = useState();
+  const [astroidsYT, setAstroidsYT] = useState([]);
 
   useEffect(() => {
     API.getNASAAsteroids()
