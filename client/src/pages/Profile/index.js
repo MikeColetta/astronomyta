@@ -7,13 +7,15 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import ProfilePic from '../../assets/images/Loginpic.jpg';
 
 function Profile() {
     return (
         <div>
-            <Jumbotron>
-                <span>Image goes here</span>
-            </Jumbotron>
+            <Jumbotron
+      className="jumbotronStyle"
+        style={{ backgroundImage: `url(${ProfilePic})` }}
+      />
             <Container>
 
                 <Row>
