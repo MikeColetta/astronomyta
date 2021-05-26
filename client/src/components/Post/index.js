@@ -40,7 +40,6 @@ function Post(props) {
     return (
         <Card className="cardStyle">
             <Card.Header>{props.props.title} {props.props.date}</Card.Header>
-
             <Card.Body>
                 {content}
                 {comments}
