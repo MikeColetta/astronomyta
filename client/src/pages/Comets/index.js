@@ -20,7 +20,10 @@ function Comets() {
       .catch(err => console.error(err))
 
     API.getYouTubeComets()
-      .then(res => setCometsYT(res.data.items.map(post => createYoutubePost(post))))
+      .then(res => {
+        setCometsYT(res.data.items.map(post => createYoutubePost(post)))
+        console.log(res);
+      })
       .catch(err => console.error(err))
   }, [])
 

@@ -14,7 +14,7 @@ import { createYoutubePost, createPost } from '../../utils/pageHelper'
 
 function Stars() {
   const [starPhotos, setStarPhotos] = useState([]);
-  const [starsYT, setStarsYT] = useState();
+  const [starsYT, setStarsYT] = useState([]);
 
   useEffect(() => {
     API.getNASAStars()
