@@ -44,6 +44,10 @@ function Profile({ authService }) {
               <Button variant="primary" type="submit">
                 Login
               </Button>
+              <section className="optionalLogin">
+                <p>Login with</p>
+                <button variant="primary" type="submit" onClick={onLogin}>Google</button>
+              </section>
             </Form>
           </Card>
 
@@ -77,10 +81,6 @@ function Profile({ authService }) {
             </Form>
           </Card>
         </Row>
-        <section>
-          <h1>Login</h1>
-          <button onClick={onLogin}>Google</button>
-        </section>
       </Container>
     </div>
   );
