@@ -1,0 +1,9 @@
+.imageStyle {
+  max-width: 33%;
+  height: auto;
+}
+
+.cardStyle {
+  color: white;
+  background-color: #343A40 !important;
+}
