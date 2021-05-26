@@ -11,7 +11,7 @@ import ProfilePic from '../../assets/images/Loginpic.jpg';
 
 function Profile() {
     return (
-        <div>
+        <div className="pageStyle">
             <Jumbotron
       className="jumbotronStyle"
         style={{ backgroundImage: `url(${ProfilePic})` }}

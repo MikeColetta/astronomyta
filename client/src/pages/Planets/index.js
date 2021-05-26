@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
@@ -7,14 +7,30 @@ import Card from "react-bootstrap/Card";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import planetPhoto from '../../assets/images/Neptune.jpg';
 import API from '../../utils/API';
+import Post from '../../components/Post';
+
 
 function Planets() {
-
+  const [planetPhotos, setPlanetPhotos] = useState([]);
   const [planetsYT, setPlanetsYT] = useState();
 
-  API.getYouTubePlanets()
-    .then(res => setPlanetsYT(res.data.hdurl))
-    .catch(err => console.error(err))
+  useEffect(() => {
+    API.getNASAPlanets()
+      .then(res => setPlanetPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData))))
+      .catch(err => console.error(err))
+
+    API.getYouTubePlanets()
+      .then(res => setPlanetsYT(res.data.hdurl))
+      .catch(err => console.error(err))
+  }, [])
+
+  function createPost(postData) {
+    return {
+      title: postData.data[0].title,
+      imageLink: postData.links[0].href,
+      date: postData.data[0].date_created
+    }
+  }
 
   return (
     <div>
@@ -49,7 +65,7 @@ function Planets() {
           <Col>
             <Card>
               <ListGroup>
-              <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + planetsYT + ')' }}> </ListGroup.Item>
+                <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + planetsYT + ')' }}> </ListGroup.Item>
 
                 <ListGroup.Item>This is the second row!</ListGroup.Item>
               </ListGroup>
@@ -58,8 +74,9 @@ function Planets() {
           <Col>
             <Card>
               <ListGroup>
-                <ListGroup.Item>This is the first row!</ListGroup.Item>
-                <ListGroup.Item>This is the second row!</ListGroup.Item>
+                {planetPhotos.map((photo) => {
+                  return <Post props={photo}></Post>
+                })}
               </ListGroup>
             </Card>
           </Col>
