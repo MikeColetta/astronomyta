@@ -29,7 +29,7 @@ function Comets() {
 
 
   return (
-    <div>
+    <div className="pageStyle">
       <Jumbotron
         className="jumbotronStyle"
         style={{ backgroundImage: `url(${cometPhoto})` }}
