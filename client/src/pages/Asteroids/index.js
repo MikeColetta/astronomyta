@@ -8,6 +8,8 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import asteroidPhoto from '../../assets/images/AsteroidIda.jpg';
 import API from '../../utils/API';
 import Post from '../../components/Post';
+import { createYoutubePost, createPost } from '../../utils/pageHelper'
+
 
 function Asteroids() {
   const [asteroidPhotos, setAsteroidPhotos] = useState([]);
@@ -19,17 +21,11 @@ function Asteroids() {
       .catch(err => console.error(err))
 
     API.getYouTubeAstroids()
-      .then(res => setAstroidsYT(res.data.hdurl))
+      .then(res => setAstroidsYT(res.data.items.map(post => createYoutubePost(post))))
       .catch(err => console.error(err))
   }, [])
 
-  function createPost(postData) {
-    return {
-      title: postData.data[0].title,
-      imageLink: postData.links[0].href,
-      date: postData.data[0].date_created
-    }
-  }
+  
   return (
     <div>
       <Jumbotron

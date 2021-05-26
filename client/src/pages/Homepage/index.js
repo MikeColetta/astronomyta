@@ -9,6 +9,8 @@ import Card from 'react-bootstrap/Card';
 import NasaTwitter from '../../components/NasaTwitter';
 import API from '../../utils/API';
 import Post from '../../components/Post';
+import { createYoutubePost, createPost } from '../../utils/pageHelper'
+
 
 function Homepage() {
   const [apod, setApod] = useState();
@@ -24,8 +26,10 @@ function Homepage() {
     }
     const videoID = youtubeParser(data.url);
 
+
     return `https://img.youtube.com/vi/${videoID}/0.jpg`;
   }
+
 
   useEffect(() => {
     API.getNASAAPOD()
