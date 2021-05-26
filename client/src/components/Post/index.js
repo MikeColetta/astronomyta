@@ -45,14 +45,12 @@ function Post(props) {
 
     return (
         <Card className="cardStyle">
-            <Card.Header>{props.props.title}</Card.Header>
+            <Card.Header>{props.props.title} {props.props.date}</Card.Header>
             <Card.Body>
-                <Card.Text className='text-muted'>{props.props.date}</Card.Text>
                 {content}
                 {comments}
                 <Card.Text>{props.likes}</Card.Text>
                 <Button variant='primary' onClick={() => onLike()}>Like</Button>
-                
             </Card.Body>
         </Card>
     )
