@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import planetPhoto from '../../assets/images/Neptune.jpg';
+import planetPhoto from '../../assets/images/Planet.gif';
 import API from '../../utils/API';
 import Post from '../../components/Post';
 import { createYoutubePost, createPost } from '../../utils/pageHelper'
