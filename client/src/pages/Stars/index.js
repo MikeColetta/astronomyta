@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
@@ -7,14 +7,30 @@ import Card from "react-bootstrap/Card";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import starPhoto from '../../assets/images/TabbysStar.jpg';
 import API from '../../utils/API';
+import Post from '../../components/Post';
+
 
 function Stars() {
-
+  const [starPhotos, setStarPhotos] = useState([]);
   const [starsYT, setStarsYT] = useState();
 
-  API.getYouTubeStars()
-    .then(res => setStarsYT(res.data.hdurl))
-    .catch(err => console.error(err))
+  useEffect(() => {
+    API.getNASAStars()
+      .then(res => setStarPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData))))
+      .catch(err => console.error(err))
+
+    API.getYouTubeStars()
+      .then(res => setStarsYT(res.data.hdurl))
+      .catch(err => console.error(err))
+  }, [])
+
+  function createPost(postData) {
+    return {
+      title: postData.data[0].title,
+      imageLink: postData.links[0].href,
+      date: postData.data[0].date_created
+    }
+  }
 
   return (
     <div>
@@ -50,7 +66,7 @@ function Stars() {
           <Col>
             <Card>
               <ListGroup>
-              <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + starsYT + ')' }}> </ListGroup.Item>
+                <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + starsYT + ')' }}> </ListGroup.Item>
 
                 <ListGroup.Item>This is the second row!</ListGroup.Item>
               </ListGroup>
@@ -59,8 +75,9 @@ function Stars() {
           <Col>
             <Card>
               <ListGroup>
-                <ListGroup.Item>This is the first row!</ListGroup.Item>
-                <ListGroup.Item>This is the second row!</ListGroup.Item>
+                {starPhotos.map((photo) => {
+                  return <Post props={photo}></Post>
+                })}
               </ListGroup>
             </Card>
           </Col>

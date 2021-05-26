@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
@@ -7,15 +7,29 @@ import Card from "react-bootstrap/Card";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import asteroidPhoto from '../../assets/images/AsteroidIda.jpg';
 import API from '../../utils/API';
+import Post from '../../components/Post';
 
 function Asteroids() {
-
+  const [asteroidPhotos, setAsteroidPhotos] = useState([]);
   const [astroidsYT, setAstroidsYT] = useState();
 
-  API.getYouTubeAstroids()
-  .then(res => setAstroidsYT(res.data.hdurl))
-  .catch(err => console.error(err))
+  useEffect(() => {
+    API.getNASAAsteroids()
+      .then(res => setAsteroidPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData))))
+      .catch(err => console.error(err))
 
+    API.getYouTubeAstroids()
+      .then(res => setAstroidsYT(res.data.hdurl))
+      .catch(err => console.error(err))
+  }, [])
+
+  function createPost(postData) {
+    return {
+      title: postData.data[0].title,
+      imageLink: postData.links[0].href,
+      date: postData.data[0].date_created
+    }
+  }
   return (
     <div>
       <Jumbotron
@@ -49,7 +63,7 @@ function Asteroids() {
           <Col>
             <Card>
               <ListGroup>
-              <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + astroidsYT + ')' }}> </ListGroup.Item>
+                <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + astroidsYT + ')' }}> </ListGroup.Item>
 
                 <ListGroup.Item>This is the second row!</ListGroup.Item>
               </ListGroup>
@@ -58,8 +72,9 @@ function Asteroids() {
           <Col>
             <Card>
               <ListGroup>
-                <ListGroup.Item>This is the first row!</ListGroup.Item>
-                <ListGroup.Item>This is the second row!</ListGroup.Item>
+                {asteroidPhotos.map((photo) => {
+                  return <Post props={photo}></Post>
+                })}
               </ListGroup>
             </Card>
           </Col>

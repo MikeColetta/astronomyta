@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
 import Row from "react-bootstrap/Row";
@@ -7,14 +7,30 @@ import Card from "react-bootstrap/Card";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import cometPhoto from '../../assets/images/CometNeowise.jpg';
 import API from '../../utils/API';
+import Post from '../../components/Post';
 
 function Comets() {
-
+  const [cometPhotos, setCometPhotos] = useState([]);
   const [cometYT, setCometsYT] = useState();
 
-  API.getYouTubeComets()
-    .then(res => setCometsYT(res.data.hdurl))
-    .catch(err => console.error(err))
+  useEffect(() => {
+    API.getNASAComets()
+      .then(res => setCometPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData))))
+      .catch(err => console.error(err))
+
+    API.getYouTubeComets()
+      .then(res => setCometsYT(res.data.hdurl))
+      .catch(err => console.error(err))
+  }, [])
+
+  function createPost(postData) {
+    return {
+      title: postData.data[0].title,
+      imageLink: postData.links[0].href,
+      date: postData.data[0].date_created
+    }
+  }
+
   return (
     <div>
       <Jumbotron
@@ -55,8 +71,9 @@ function Comets() {
           <Col>
             <Card>
               <ListGroup>
-                <ListGroup.Item>This is the first row!</ListGroup.Item>
-                <ListGroup.Item>This is the second row!</ListGroup.Item>
+                {cometPhotos.map((photo) => {
+                  return <Post props={photo}></Post>
+                })}
               </ListGroup>
             </Card>
           </Col>

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Card, Button } from 'react-bootstrap'
 import Comment from '../Comment'
 import API from '../../utils/API'
+import './style.css'
 
 function Post(props) {
         
@@ -21,7 +22,7 @@ function Post(props) {
 
     let content
     if (props.props.imageLink) {
-        content = <img src={props.props.imageLink}></img>
+        content = <img className="imageStyle" src={props.props.imageLink}></img>
     }
     else if (props.props.videoLink) {
         content = <iframe src={props.props.videoLink} id="video_player" width="420" height="315" webkit-playsinline="true"
@@ -43,7 +44,7 @@ function Post(props) {
     }
 
     return (
-        <Card>
+        <Card className="cardStyle">
             <Card.Header>{props.props.title}</Card.Header>
             <Card.Body>
                 <Card.Text className='text-muted'>{props.props.date}</Card.Text>
