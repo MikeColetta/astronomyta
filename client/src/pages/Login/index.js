@@ -17,7 +17,7 @@ function Profile({ authService }) {
   };
 
   return (
-    <div>
+    <div className="pageStyle">
       <section>
         <section>
           <h1>Login</h1>
