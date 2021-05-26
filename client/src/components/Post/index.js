@@ -2,34 +2,30 @@ import React, {useState, useEffect} from 'react'
 import { Card, Button } from 'react-bootstrap'
 import Comment from '../Comment'
 import API from '../../utils/API'
+import './style.css'
 
 function Post(props) {
-        
     const [likes, setLikes] = useState()
-
      useEffect(() => {      
     },[])
-
     function onLike() {
         setLikes(likes + 1)
-
         API.updateLikes()
             .catch(err => console.log(err))
     }
-
     // Check content type
-
     let content
     if (props.props.imageLink) {
-        content = <img src={props.props.imageLink}></img>
+        content = <img className="imageStyle" src={props.props.imageLink}></img>
     }
     else if (props.props.videoLink) {
-        content = <iframe src={props.props.videoLink} id="video_player" width="420" height="315" webkit-playsinline="true"
+        let static_youtube_url = "https://www.youtube.com/embed/"
+        let fullurl = static_youtube_url + props.props.videoLink
+        content = <iframe src={fullurl} id="video_player" width="420" height="315" webkit-playsinline="true"
         playsinline="true"></iframe>
     } else {
         content = <div></div>
     }
-
     // Check for comment
     let comments
     if (props.props.comments) {
@@ -41,20 +37,16 @@ function Post(props) {
     } else {
         comments = <div></div>
     }
-
     return (
-        <Card>
-            <Card.Header>{props.props.title}</Card.Header>
+        <Card className="cardStyle">
+            <Card.Header>{props.props.title} {props.props.date}</Card.Header>
             <Card.Body>
-                <Card.Text className='text-muted'>{props.props.date}</Card.Text>
                 {content}
                 {comments}
                 <Card.Text>{props.likes}</Card.Text>
                 <Button variant='primary' onClick={() => onLike()}>Like</Button>
-                
             </Card.Body>
         </Card>
     )
 }
-
 export default Post

@@ -11,7 +11,7 @@ class NasaTwitter extends Component {
 
     render() {
         return (
-            <a class="twitter-timeline" 
+            <a className="twitter-timeline" 
                 href="https://twitter.com/NASA?ref_src=twsrc%5Etfw"
                 data-width="400"
                 data-height="800"

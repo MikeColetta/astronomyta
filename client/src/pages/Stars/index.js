@@ -8,6 +8,8 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import starPhoto from '../../assets/images/TabbysStar.jpg';
 import API from '../../utils/API';
 import Post from '../../components/Post';
+import { createYoutubePost, createPost } from '../../utils/pageHelper'
+
 
 
 function Stars() {
@@ -20,17 +22,9 @@ function Stars() {
       .catch(err => console.error(err))
 
     API.getYouTubeStars()
-      .then(res => setStarsYT(res.data.hdurl))
+      .then(res => setStarsYT(res.data.items.map(post => createYoutubePost(post))))
       .catch(err => console.error(err))
   }, [])
-
-  function createPost(postData) {
-    return {
-      title: postData.data[0].title,
-      imageLink: postData.links[0].href,
-      date: postData.data[0].date_created
-    }
-  }
 
   return (
     <div>
@@ -66,9 +60,10 @@ function Stars() {
           <Col>
             <Card>
               <ListGroup>
-                <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + starsYT + ')' }}> </ListGroup.Item>
+                {starsYT.map((photo) => {
+                  return <Post props={photo}></Post>
+                })}
 
-                <ListGroup.Item>This is the second row!</ListGroup.Item>
               </ListGroup>
             </Card>
           </Col>

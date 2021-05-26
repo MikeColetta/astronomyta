@@ -9,6 +9,8 @@ import Card from 'react-bootstrap/Card';
 import NasaTwitter from '../../components/NasaTwitter'
 import API from '../../utils/API';
 import Post from '../../components/Post';
+import { createYoutubePost, createPost } from '../../utils/pageHelper'
+
 
 function Homepage() {
     const [apod, setApod] = useState();
@@ -21,21 +23,13 @@ function Homepage() {
             .catch(err => console.error(err))
 
         API.getYouTubeNASA()
-            .then(res => setYouTube(res.data.hdurl))
+            .then(res => setYouTube(res.data.items.map(post => createYoutubePost(post))))
             .catch(err => console.error(err))
 
         API.getNASAAstronomy()
             .then(res => setNasaPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData))))
             .catch(err => console.error(err))
     }, [])
-
-    function createPost(postData) {
-        return {
-            title: postData.data[0].title,
-            imageLink: postData.links[0].href,
-            date: postData.data[0].date_created
-        }
-    }
 
     return (
         <div className="pageStyle">
@@ -47,7 +41,10 @@ function Homepage() {
                     <Col>
                         <Card>
                             <ListGroup>
-                                <ListGroup.Item className="thumbnail, listStyle" style={{video: 'url(' + nasaYT + ')'}}> </ListGroup.Item>
+                                {nasaYT.map((photo) => {
+                                    return <Post props={photo}></Post>
+                                })}
+
                             </ListGroup>
                         </Card>
                     </Col>
