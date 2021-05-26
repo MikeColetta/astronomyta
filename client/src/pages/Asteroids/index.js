@@ -27,7 +27,7 @@ function Asteroids() {
 
   
   return (
-    <div>
+    <div className="pageStyle">
       <Jumbotron
         className="jumbotronStyle"
         style={{ backgroundImage: `url(${asteroidPhoto})` }}
