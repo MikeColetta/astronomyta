@@ -8,6 +8,8 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import planetPhoto from '../../assets/images/Neptune.jpg';
 import API from '../../utils/API';
 import Post from '../../components/Post';
+import { createYoutubePost, createPost } from '../../utils/pageHelper'
+
 
 
 function Planets() {
@@ -20,17 +22,9 @@ function Planets() {
       .catch(err => console.error(err))
 
     API.getYouTubePlanets()
-      .then(res => setPlanetsYT(res.data.hdurl))
+      .then(res => setPlanetsYT(res.data.items.map(post => createYoutubePost(post))))
       .catch(err => console.error(err))
   }, [])
-
-  function createPost(postData) {
-    return {
-      title: postData.data[0].title,
-      imageLink: postData.links[0].href,
-      date: postData.data[0].date_created
-    }
-  }
 
   return (
     <div>
@@ -65,9 +59,10 @@ function Planets() {
           <Col>
             <Card>
               <ListGroup>
-                <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + planetsYT + ')' }}> </ListGroup.Item>
+                {planetsYT.map((photo) => {
+                  return <Post props={photo}></Post>
+                })}
 
-                <ListGroup.Item>This is the second row!</ListGroup.Item>
               </ListGroup>
             </Card>
           </Col>

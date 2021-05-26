@@ -8,10 +8,11 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import cometPhoto from '../../assets/images/CometNeowise.jpg';
 import API from '../../utils/API';
 import Post from '../../components/Post';
+import { createYoutubePost, createPost } from '../../utils/pageHelper'
 
 function Comets() {
   const [cometPhotos, setCometPhotos] = useState([]);
-  const [cometYT, setCometsYT] = useState();
+  const [cometYT, setCometsYT] = useState([]);
 
   useEffect(() => {
     API.getNASAComets()
@@ -19,17 +20,10 @@ function Comets() {
       .catch(err => console.error(err))
 
     API.getYouTubeComets()
-      .then(res => setCometsYT(res.data.hdurl))
+      .then(res => setCometsYT(res.data.items.map(post => createYoutubePost(post))))
       .catch(err => console.error(err))
   }, [])
 
-  function createPost(postData) {
-    return {
-      title: postData.data[0].title,
-      imageLink: postData.links[0].href,
-      date: postData.data[0].date_created
-    }
-  }
 
   return (
     <div>
@@ -62,13 +56,16 @@ function Comets() {
         <Row>
           <Col>
             <Card>
-              <ListGroup>
-                <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + cometYT + ')' }}> </ListGroup.Item>
+                <ListGroup>
+                  {cometYT.map((photo) => {
+                    return <Post props={photo}></Post>
+                  })}
 
-              </ListGroup>
+                </ListGroup>
             </Card>
           </Col>
           <Col>
+            
             <Card>
               <ListGroup>
                 {cometPhotos.map((photo) => {
