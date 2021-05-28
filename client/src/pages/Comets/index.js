@@ -8,7 +8,8 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import cometPhoto from '../../assets/images/Comets.gif';
 import API from '../../utils/API';
 import Post from '../../components/Post';
-import { createYoutubePost, createPost } from '../../utils/pageHelper'
+import { createYoutubePost, createPost } from '../../utils/pageHelper';
+import './style.css';
 
 function Comets() {
   const [cometPhotos, setCometPhotos] = useState([]);
@@ -38,13 +39,7 @@ function Comets() {
       </Jumbotron>
       <Container>
         <Row>
-          <Card>
-            <h1>Comets</h1>
-          </Card>
-        </Row>
-        <Row>
-          <Card>
-            <p>
+            <p className="descriptionText">
               Comets are cosmic snowballs of frozen gases, rock and dust that
               orbit the Sun. When frozen, they are the size of a small town.
               When a comet's orbit brings it close to the Sun, it heats up and
@@ -54,7 +49,6 @@ function Comets() {
               orbiting our Sun in the Kuiper Belt and even more distant Oort
               Cloud.
             </p>
-          </Card>
         </Row>
         <Row>
           <Col>

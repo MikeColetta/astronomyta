@@ -8,7 +8,8 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import asteroidPhoto from '../../assets/images/Asteroid.gif';
 import API from '../../utils/API';
 import Post from '../../components/Post';
-import { createYoutubePost, createPost } from '../../utils/pageHelper'
+import { createYoutubePost, createPost } from '../../utils/pageHelper';
+import './style.css';
 
 
 function Asteroids() {
@@ -36,13 +37,8 @@ function Asteroids() {
       </Jumbotron>
       <Container>
         <Row>
-          <Card>
-            <h1>Asteroids</h1>
-          </Card>
-        </Row>
-        <Row>
-          <Card>
-            <p>
+          
+            <p className="descriptionText">
               Asteroids, sometimes called minor planets, are rocky, airless
               remnants left over from the early formation of our solar system
               about 4.6 billion years ago. The current known asteroid count is:
@@ -53,7 +49,7 @@ function Asteroids() {
               33 feet (10 meters) across. The total mass of all the asteroids
               combined is less than that of Earth's Moon.
             </p>
-          </Card>
+          
         </Row>
         <Row>
           <Col>

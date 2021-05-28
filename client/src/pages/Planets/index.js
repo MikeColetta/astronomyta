@@ -9,6 +9,7 @@ import planetPhoto from '../../assets/images/Planet.gif';
 import API from '../../utils/API';
 import Post from '../../components/Post';
 import { createYoutubePost, createPost } from '../../utils/pageHelper'
+import './style.css';
 
 
 
@@ -39,14 +40,8 @@ function Planets() {
         <h1 className="homepageHeader">Planets</h1>
       </Jumbotron>
       <Container>
-        <Row>
-          <Card>
-            <h1>Planets</h1>
-          </Card>
-        </Row>
-        <Row>
-          <Card>
-            <p>
+        <Row>        
+            <p className="descriptionText">
               There are more planets than stars in our galaxy. The current count
               orbiting our star: eight. The inner, rocky planets are Mercury,
               Venus, Earth and Mars. NASA's newest rover — Perseverance — landed
@@ -57,7 +52,6 @@ function Planets() {
               been discovered beyond our solar system. Scientists call them
               exoplanets (exo means "from outside.")
             </p>
-          </Card>
         </Row>
         <Row>
           <Col>
