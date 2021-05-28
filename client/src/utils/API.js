@@ -38,7 +38,10 @@ export default {
         return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=planets&type=video&key=${ REACT_APP_YOUTUBE_API_KEY }`)
     },
     getYouTubeStars: function() {
-        return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=stars&type=video&key=${ REACT_APP_YOUTUBE_API_KEY }`)
-    },    
+        return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=stars+astronomy&type=video&key=${ REACT_APP_YOUTUBE_API_KEY }`)
+    },
+    createPosts: function() {
+
+    }    
 }
 
