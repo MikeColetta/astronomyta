@@ -9,7 +9,7 @@ import starPhoto from '../../assets/images/TabbysStar.jpg';
 import API from '../../utils/API';
 import Post from '../../components/Post';
 import { createYoutubePost, createPost } from '../../utils/pageHelper'
-
+import './style.css';
 
 
 function Stars() {
@@ -36,13 +36,7 @@ function Stars() {
       </Jumbotron>
       <Container>
         <Row>
-          <Card>
-            <h1>Stars</h1>
-          </Card>
-        </Row>
-        <Row>
-          <Card>
-            <p>
+            <p className="descriptionText">
               Stars are the most widely recognized astronomical objects, and
               represent the most fundamental building blocks of galaxies. The
               age, distribution, and composition of the stars in a galaxy trace
@@ -54,7 +48,6 @@ function Stars() {
               study of the birth, life, and death of stars is central to the
               field of astronomy.
             </p>
-          </Card>
         </Row>
         <Row>
           <Col>
