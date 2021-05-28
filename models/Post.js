@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const CommentModel = require('./Comment')
 
 const postSchema = new Schema({
     id: {
@@ -9,7 +8,6 @@ const postSchema = new Schema({
         primaryKey: true,
         autoIncrement: true
     },
-    comments: [CommentModel],
     title: {
         type: String,
     },
@@ -28,7 +26,6 @@ const postSchema = new Schema({
     description: {
         type: String
     }
-
 })
 
 const Post = mongoose.model('Post', postSchema)
