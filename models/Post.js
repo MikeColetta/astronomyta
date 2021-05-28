@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const CommentModel = require('./Comment')
 
-const postModel = new Schema({
+const postSchema = new Schema({
     id: {
         type: Number,
         allowNull: false,
@@ -10,11 +10,11 @@ const postModel = new Schema({
         autoIncrement: true
     },
     comments: [CommentModel],
-    text: {
+    title: {
         type: String,
     },
     date: {
-        type: Date, default: Date.now
+        type: String
     },
     imageLink: {
         type: String,
@@ -23,7 +23,7 @@ const postModel = new Schema({
         type: String
     },
     createdDate: {
-        type: Date
+        type: Date, default: Date.now
     },
     description: {
         type: String
@@ -31,6 +31,6 @@ const postModel = new Schema({
 
 })
 
-const PostModel = mongoose.model('postModel', postModel)
+const Post = mongoose.model('Post', postSchema)
 
-module.exports = PostModel
+module.exports = Post
