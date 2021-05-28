@@ -14,7 +14,7 @@ import './style.css';
 
 function Asteroids() {
   const [asteroidPhotos, setAsteroidPhotos] = useState([]);
-  const [astroidsYT, setAstroidsYT] = useState([]);
+  const [asteroidsYT, setAstroidsYT] = useState([]);
 
   useEffect(() => {
     API.getNASAAsteroids()
@@ -22,7 +22,10 @@ function Asteroids() {
       .catch(err => console.error(err))
 
     API.getYouTubeAstroids()
-      .then(res => setAstroidsYT(res.data.items.map(post => createYoutubePost(post))))
+      .then(res => {
+        setAstroidsYT(res.data.items.map(post => createYoutubePost(post)))
+        console.log(res);
+      })
       .catch(err => console.error(err))
   }, [])
 
@@ -55,9 +58,9 @@ function Asteroids() {
           <Col>
             <Card>
               <ListGroup>
-                <ListGroup.Item className="thumbnail" style={{ iframe: 'url(' + astroidsYT + ')' }}> </ListGroup.Item>
-
-                <ListGroup.Item>This is the second row!</ListGroup.Item>
+                {asteroidsYT.map((photo) => {
+                    return <Post props={photo}></Post>
+                  })} 
               </ListGroup>
             </Card>
           </Col>
