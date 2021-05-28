@@ -40,8 +40,8 @@ export default {
     getYouTubeStars: function() {
         return axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=stars+astronomy&type=video&key=${ REACT_APP_YOUTUBE_API_KEY }`)
     },
-    createPosts: function() {
-
+    createPost: function(postInfo) {
+        return axios.post("/api/post", postInfo);
     }    
 }
 

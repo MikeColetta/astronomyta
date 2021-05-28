@@ -5,13 +5,17 @@ import API from '../../utils/API'
 import './style.css'
 
 function Post(props) {
-    const [likes, setLikes] = useState()
-     useEffect(() => {      
+    const [likes, setLikes] = useState(0)
+     useEffect(() => {   
+        console.log(props.props)
     },[])
-    function onLike() {
+
+    function onLike(props) {
         setLikes(likes + 1)
-        API.updateLikes()
-            .catch(err => console.log(err))
+        let postInfo = props
+        console.log(postInfo)
+         API.createPost(postInfo) 
+             .catch(err => console.log(err))
     }
     // Check content type
     let content
@@ -44,7 +48,7 @@ function Post(props) {
                 {content}
                 {comments}
                 <Card.Text>{props.likes}</Card.Text>
-                <Button variant='primary' onClick={() => onLike()}>Like</Button>
+                <Button variant='primary' data-index={props.props} onClick={() => onLike(props.props)}>Recommended: {likes} times!</Button>
             </Card.Body>
         </Card>
     )
