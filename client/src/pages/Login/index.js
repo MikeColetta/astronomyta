@@ -23,14 +23,14 @@ function Profile({ authService }) {
   };
 
   return (
-    <div>
+    <div className='pageStyle'>
       <Jumbotron
         className='jumbotronStyle'
         style={{ backgroundImage: `url(${Loginpic})` }}
       />
       <Container>
         <Row>
-          <Card className='m-3' style={{ width: '25rem' }}>
+          <Card className='m-3 cardStyle' style={{ width: '25rem' }}>
             <Card.Header>Login</Card.Header>
             <Form className='m-3'>
               <Form.Group controlId='formBasicEmail'>
@@ -53,7 +53,7 @@ function Profile({ authService }) {
             </Form>
           </Card>
 
-          <Card className='m-3' style={{ width: '25rem' }}>
+          <Card className='m-3 cardStyle' style={{ width: '25rem' }}>
             <Card.Header>Create Account</Card.Header>
             <Form className='m-3'>
               <Form.Group controlId='formBasicName'>
