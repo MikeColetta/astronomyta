@@ -3,6 +3,7 @@ import { Card, Button } from 'react-bootstrap'
 import Comment from '../Comment'
 import API from '../../utils/API'
 import './style.css'
+import moment from 'moment';
 
 function Post(props) {
     const [likes, setLikes] = useState(0)
@@ -43,7 +44,7 @@ function Post(props) {
     }
     return (
         <Card className="cardStyle">
-            <Card.Header>{props.props.title} {props.props.date}</Card.Header>
+            <Card.Header>{props.props.title} {moment(props.props.date).format('MM/DD/YYYY')}</Card.Header>
             <Card.Body>
                 {content}
                 {comments}
