@@ -19,13 +19,13 @@ function Profile() {
             <Container>
 
                 <Row>
-                    <Card>
+                    <Card className="cardStyle">
                         <Card.Header>Recently Liked Videos</Card.Header>
                     </Card>
                 </Row>
 
                 <Row>
-                    <Card>
+                    <Card className="cardStyle">
                         <Card.Header>Recently Liked Images</Card.Header>
                     </Card>
                 </Row>
