@@ -7,16 +7,30 @@ import moment from 'moment';
 
 function Post(props) {
     const [likes, setLikes] = useState(0)
-     useEffect(() => {   
-        console.log(props.props)
+    const postData = props.props;
+
+    useEffect(() => {   
+        if(props.isSaved) {
+            setLikes(postData.Likes)
+        };
+
     },[])
 
-    function onLike(props) {
+    
+
+    function onLike() {
+        console.log({postData})
+        if(props.isSaved) {
+            API.updatePost(postData._id, {Likes: likes + 1})
+                .catch((err) => console.error(err));
+        }
+        else {
+        // let postInfo = p
+         API.createPost(postData)
+            .then() 
+             .catch(err => console.error(err))
+        }
         setLikes(likes + 1)
-        let postInfo = props
-        console.log(postInfo)
-         API.createPost(postInfo) 
-             .catch(err => console.log(err))
     }
     // Check content type
     let content

@@ -36,12 +36,14 @@ function Homepage() {
     //query database here
 
     API.getAllPosts()
-      .then((res) => setLikedPosts(res.data))
+      .then((res) => {
+        let sortedPosts = res.data.sort((a, b) => b.Likes - a.Likes )
+        setLikedPosts(sortedPosts)
+      })
       .catch((err) => console.error(err))
       
     API.getNASAAPOD()
       .then((res) => res.data)
-      //   .then(console.log)
       .then((data) => setApod(data.hdurl || getThumb(data)))
       .catch((err) => console.error(err));
 
