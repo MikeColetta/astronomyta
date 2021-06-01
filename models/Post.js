@@ -25,6 +25,10 @@ const postSchema = new Schema({
     },
     description: {
         type: String
+    },
+    Likes: {
+        type: Number,
+        default: 1
     }
 })
 

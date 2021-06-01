@@ -16,6 +16,7 @@ function Homepage() {
   const [apod, setApod] = useState();
   const [nasaYT, setYouTube] = useState();
   const [nasaPhotos, setNasaPhotos] = useState([]);
+  const [likedPosts, setLikedPosts] = useState([]);
 
   function getThumb(data) {
     function youtubeParser(url) {
@@ -32,6 +33,12 @@ function Homepage() {
 
 
   useEffect(() => {
+    //query database here
+
+    API.getAllPosts()
+      .then((res) => setLikedPosts(res.data))
+      .catch((err) => console.error(err))
+      
     API.getNASAAPOD()
       .then((res) => res.data)
       //   .then(console.log)
@@ -74,12 +81,9 @@ function Homepage() {
           <Col>
             <Card>
               <ListGroup>
-                <ListGroup.Item
-                  className='thumbnail, listStyle'
-                  style={{ video: 'url(' + nasaYT + ')' }}
-                >
-                  {' '}
-                </ListGroup.Item>
+              {likedPosts.map((post) => {
+                  return <Post props={post} isSaved={true}></Post>;
+                })}
               </ListGroup>
             </Card>
           </Col>
@@ -87,7 +91,7 @@ function Homepage() {
             <Card>
               <ListGroup>
                 {nasaPhotos.map((photo) => {
-                  return <Post props={photo}></Post>;
+                  return <Post props={photo} isSaved={false}></Post>;
                 })}
               </ListGroup>
             </Card>
