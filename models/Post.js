@@ -26,7 +26,10 @@ const postSchema = new Schema({
     description: {
         type: String
     },
-    Likes: {
+    category: {
+        type: String
+    },
+    likes: {
         type: Number,
         default: 1
     }

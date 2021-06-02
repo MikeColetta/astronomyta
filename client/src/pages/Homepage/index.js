@@ -37,7 +37,7 @@ function Homepage() {
 
     API.getAllPosts()
       .then((res) => {
-        let sortedPosts = res.data.sort((a, b) => b.Likes - a.Likes )
+        let sortedPosts = res.data.sort((a, b) => b.likes - a.likes )
         setLikedPosts(sortedPosts)
       })
       .catch((err) => console.error(err))
