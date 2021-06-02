@@ -7,6 +7,6 @@ router.route('/')
 
 router.route('/:id')
     .get(postController.findById)
-    // .put(postController.update)
+    .put(postController.update)
 
 module.exports = router;
