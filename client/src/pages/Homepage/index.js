@@ -35,7 +35,7 @@ function Homepage() {
   useEffect(() => {
     //query database here
 
-    API.getAllPosts()
+    API.getAllPosts('')
       .then((res) => {
         let sortedPosts = res.data.sort((a, b) => b.likes - a.likes )
         setLikedPosts(sortedPosts)
