@@ -15,15 +15,23 @@ import './style.css';
 function Asteroids() {
   const [asteroidPhotos, setAsteroidPhotos] = useState([]);
   const [asteroidsYT, setAstroidsYT] = useState([]);
+  const [likedPosts, setLikedPosts] = useState([]);
 
   useEffect(() => {
+    API.getAllPosts()
+    .then((res) => {
+      let sortedPosts = res.data.sort((a, b) => b.likes - a.likes )
+      setLikedPosts(sortedPosts)
+    })
+    .catch((err) => console.error(err))
+
     API.getNASAAsteroids()
-      .then(res => setAsteroidPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData))))
+      .then(res => setAsteroidPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData, 'Asteroids'))))
       .catch(err => console.error(err))
 
     API.getYouTubeAstroids()
       .then(res => {
-        setAstroidsYT(res.data.items.map(post => createYoutubePost(post)))
+        setAstroidsYT(res.data.items.map(post => createYoutubePost(post, 'Comets')))
       })
       .catch(err => console.error(err))
   }, [])
@@ -58,7 +66,7 @@ function Asteroids() {
             <Card>
               <ListGroup>
                 {asteroidsYT.map((photo) => {
-                    return <Post props={photo}></Post>
+                    return <Post props={photo} isSaved={false}></Post>
                   })} 
               </ListGroup>
             </Card>
@@ -67,7 +75,7 @@ function Asteroids() {
             <Card>
               <ListGroup>
                 {asteroidPhotos.map((photo) => {
-                  return <Post props={photo}></Post>
+                  return <Post props={photo} isSaved={false}></Post>
                 })}
               </ListGroup>
             </Card>

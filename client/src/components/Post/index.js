@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, Button, ListGroupItem } from 'react-bootstrap'
 import Comment from '../Comment'
 import API from '../../utils/API'
@@ -9,24 +9,24 @@ function Post(props) {
     const [likes, setLikes] = useState(0)
     const postData = props.props;
 
-    useEffect(() => {   
-        if(props.isSaved) {
-            setLikes(postData.Likes)
+    useEffect(() => {
+        if (props.isSaved) {
+            setLikes(postData.likes)
         };
 
-    },[])
+    }, [])
 
     function onLike() {
-        console.log({postData})
-        if(props.isSaved) {
-            API.updatePost(postData._id, {Likes: likes + 1})
+        console.log({ postData })
+        if (props.isSaved) {
+            API.updatePost(postData._id, { likes: likes + 1 })
                 .catch((err) => console.error(err));
         }
         else {
-        // let postInfo = p
-         API.createPost(postData)
-            .then() 
-             .catch(err => console.error(err))
+            // let postInfo = p
+            API.createPost(postData)
+                .then()
+                .catch(err => console.error(err))
         }
         setLikes(likes + 1)
     }
@@ -39,7 +39,7 @@ function Post(props) {
         let static_youtube_url = "https://www.youtube.com/embed/"
         let fullurl = static_youtube_url + props.props.videoLink
         content = <iframe src={fullurl} id="video_player" width="420" height="315"
-        playsInline={true}></iframe>
+            playsInline={true}></iframe>
     } else {
         content = <div></div>
     }
@@ -48,8 +48,8 @@ function Post(props) {
     if (props.props.comments) {
         comments = <div>
             {props.comments.map((comment) => {
-                    return (<Comment props={comment}></Comment>)
-                })}
+                return (<Comment props={comment}></Comment>)
+            })}
         </div>
     } else {
         comments = <div></div>
