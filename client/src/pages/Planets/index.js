@@ -16,14 +16,16 @@ import './style.css';
 function Planets() {
   const [planetPhotos, setPlanetPhotos] = useState([]);
   const [planetsYT, setPlanetsYT] = useState([]);
-  const [likedPosts, setLikedPosts] = useState([]);
+  const [imagePosts, setImagePosts] = useState([]);
+  const [videoPosts, setVideoPosts] = useState([]);
 
 
   useEffect(() => {
     API.getAllPosts('Planets')
       .then((res) => {
         let sortedPosts = res.data.sort((a, b) => b.likes - a.likes)
-        setLikedPosts(sortedPosts)
+        setImagePosts(sortedPosts.filter(post => post.videoLink == null))
+        setVideoPosts(sortedPosts.filter(post => post.imageLink == null))
       })
       .catch((err) => console.error(err))
 
@@ -66,7 +68,7 @@ function Planets() {
           <Col>
             <Card>
               <ListGroup>
-                {likedPosts.map((post) => {
+                {videoPosts.map((post) => {
                   return <Post props={post} isSaved={true}></Post>;
                 })}
                 {planetsYT.map((photo) => {
@@ -79,7 +81,7 @@ function Planets() {
           <Col>
             <Card>
               <ListGroup>
-                {likedPosts.map((post) => {
+                {imagePosts.map((post) => {
                   return <Post props={post} isSaved={true}></Post>;
                 })}
                 {planetPhotos.map((photo) => {

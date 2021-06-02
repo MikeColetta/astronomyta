@@ -14,13 +14,15 @@ import './style.css';
 function Comets() {
   const [cometPhotos, setCometPhotos] = useState([]);
   const [cometYT, setCometsYT] = useState([]);
-  const [likedPosts, setLikedPosts] = useState([]);
+  const [imagePosts, setImagePosts] = useState([]);
+  const [videoPosts, setVideoPosts] = useState([]);
 
   useEffect(() => {
     API.getAllPosts('Comets')
       .then((res) => {
         let sortedPosts = res.data.sort((a, b) => b.likes - a.likes)
-        setLikedPosts(sortedPosts)
+        setImagePosts(sortedPosts.filter(post => post.videoLink == null))
+        setVideoPosts(sortedPosts.filter(post => post.imageLink == null))
       })
       .catch((err) => console.error(err))
 
@@ -62,7 +64,7 @@ function Comets() {
           <Col>
             <Card>
               <ListGroup>
-                {likedPosts.map((post) => {
+                {videoPosts.map((post) => {
                   return <Post props={post} isSaved={true}></Post>;
                 })}
                 {cometYT.map((photo) => {
@@ -75,7 +77,7 @@ function Comets() {
           <Col>
             <Card>
               <ListGroup>
-                {likedPosts.map((post) => {
+                {imagePosts.map((post) => {
                   return <Post props={post} isSaved={true}></Post>;
                 })}
                 {cometPhotos.map((photo) => {

@@ -15,13 +15,16 @@ import './style.css';
 function Asteroids() {
   const [asteroidPhotos, setAsteroidPhotos] = useState([]);
   const [asteroidsYT, setAstroidsYT] = useState([]);
-  const [likedPosts, setLikedPosts] = useState([]);
+  const [imagePosts, setImagePosts] = useState([]);
+  const [videoPosts, setVideoPosts] = useState([]);
+
 
   useEffect(() => {
     API.getAllPosts('Asteroids')
       .then((res) => {
         let sortedPosts = res.data.sort((a, b) => b.likes - a.likes)
-        setLikedPosts(sortedPosts)
+        setImagePosts(sortedPosts.filter(post => post.videoLink == null))
+        setVideoPosts(sortedPosts.filter(post => post.imageLink == null))
       })
       .catch((err) => console.error(err))
 
@@ -65,7 +68,7 @@ function Asteroids() {
           <Col>
             <Card>
               <ListGroup>
-                {likedPosts.map((post) => {
+                {videoPosts.map((post) => {
                   return <Post props={post} isSaved={true}></Post>;
                 })}
                 {asteroidsYT.map((photo) => {
@@ -77,7 +80,7 @@ function Asteroids() {
           <Col>
             <Card>
               <ListGroup>
-                {likedPosts.map((post) => {
+                {imagePosts.map((post) => {
                   return <Post props={post} isSaved={true}></Post>;
                 })}
                 {asteroidPhotos.map((photo) => {
