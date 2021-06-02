@@ -24,7 +24,6 @@ function Asteroids() {
     API.getYouTubeAstroids()
       .then(res => {
         setAstroidsYT(res.data.items.map(post => createYoutubePost(post)))
-        console.log(res);
       })
       .catch(err => console.error(err))
   }, [])

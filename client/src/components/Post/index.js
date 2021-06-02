@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, ListGroupItem } from 'react-bootstrap'
 import Comment from '../Comment'
 import API from '../../utils/API'
 import './style.css'
@@ -15,8 +15,6 @@ function Post(props) {
         };
 
     },[])
-
-    
 
     function onLike() {
         console.log({postData})
@@ -35,13 +33,13 @@ function Post(props) {
     // Check content type
     let content
     if (props.props.imageLink) {
-        content = <img className="imageStyle" src={props.props.imageLink}></img>
+        content = <img className="imageStyle" src={props.props.imageLink} alt={props.props.title}></img>
     }
     else if (props.props.videoLink) {
         let static_youtube_url = "https://www.youtube.com/embed/"
         let fullurl = static_youtube_url + props.props.videoLink
-        content = <iframe src={fullurl} id="video_player" width="420" height="315" webkit-playsinline="true"
-        playsinline="true"></iframe>
+        content = <iframe src={fullurl} id="video_player" width="420" height="315"
+        playsInline={true}></iframe>
     } else {
         content = <div></div>
     }
@@ -57,6 +55,7 @@ function Post(props) {
         comments = <div></div>
     }
     return (
+        <ListGroupItem key={props.props._id}>
         <Card className="cardStyle">
             <Card.Header>{props.props.title} {moment(props.props.date).format('MM/DD/YYYY')}</Card.Header>
             <Card.Body>
@@ -66,6 +65,7 @@ function Post(props) {
                 <Button variant='primary' data-index={props.props} onClick={() => onLike(props.props)}>Recommended: {likes} times!</Button>
             </Card.Body>
         </Card>
+        </ListGroupItem>
     )
 }
 export default Post
