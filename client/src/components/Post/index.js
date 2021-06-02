@@ -55,16 +55,16 @@ function Post(props) {
         comments = <div></div>
     }
     return (
-        <ListGroupItem key={props.props._id}>
-            <Card className="cardStyle">
-                <Card.Header>{props.props.title} {moment(props.props.date).format('MM/DD/YYYY')}</Card.Header>
-                <Card.Body>
-                    {content}
-                    {comments}
-                    <Card.Text>{props.likes}</Card.Text>
-                    <Button variant='primary' data-index={props.props} onClick={() => onLike(props.props)}>Recommended: {likes} times!</Button>
-                </Card.Body>
-            </Card>
+        <ListGroupItem key={props.props._id} className="listStyle">
+        <Card className="cardStyle">
+            <Card.Header>{props.props.title} {moment(props.props.date).format('MM/DD/YYYY')}</Card.Header>
+            <Card.Body>
+                {content}
+                {comments}
+                <Card.Text>{props.likes}</Card.Text>
+                <Button variant='primary' data-index={props.props} onClick={() => onLike(props.props)}>Recommended: {likes} times!</Button>
+            </Card.Body>
+        </Card>
         </ListGroupItem>
     )
 }
