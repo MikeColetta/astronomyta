@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const Comment = require('./Comment')
 
 const postSchema = new Schema({
     id: {
@@ -32,7 +33,8 @@ const postSchema = new Schema({
     likes: {
         type: Number,
         default: 1
-    }
+    },
+    comments: [Comment.schema]
 })
 
 const Post = mongoose.model('Post', postSchema)
