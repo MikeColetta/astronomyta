@@ -29,12 +29,12 @@ function Asteroids() {
       .catch((err) => console.error(err))
 
     API.getNASAAsteroids()
-      .then(res => setAsteroidPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData))))
+      .then(res => setAsteroidPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData, 'Asteroids'))))
       .catch(err => console.error(err))
 
     API.getYouTubeAstroids()
       .then(res => {
-        setAstroidsYT(res.data.items.map(post => createYoutubePost(post, 'Comets')))
+        setAstroidsYT(res.data.items.map(post => createYoutubePost(post, 'Asteroids')))
       })
       .catch(err => console.error(err))
   }, [])
