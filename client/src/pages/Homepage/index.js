@@ -82,6 +82,7 @@ function Homepage() {
         <Row>
           <Col>
             <Card>
+              <h3>Recently Recommended</h3>
               <ListGroup>
               {likedPosts.map((post) => {
                   return <Post props={post} isSaved={true}></Post>;
@@ -91,6 +92,7 @@ function Homepage() {
           </Col>
           <Col>
             <Card>
+            <h3>Astronomy from NASA</h3>
               <ListGroup>
                 {nasaPhotos.map((photo) => {
                   return <Post props={photo} isSaved={false}></Post>;
