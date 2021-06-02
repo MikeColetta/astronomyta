@@ -17,3 +17,13 @@
     background-color: #343A40 !important;
     color: white;
 }
+
+h3 {
+    color: white;
+    background-color: #343A40;
+    margin-bottom: 0px !important;
+}
+
+.descriptionText {
+    color:white;
+}

@@ -6,4 +6,10 @@
     color: white;
     background-color: #343A40 !important;
   }
-
+  .listStyle {
+    background-color: #343A40 !important;
+    border-color: #292929 !important;
+  }
+  .card {
+    border-color: #343A40 !important;
+  }

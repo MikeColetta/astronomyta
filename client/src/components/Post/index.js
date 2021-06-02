@@ -55,7 +55,7 @@ function Post(props) {
         comments = <div></div>
     }
     return (
-        <ListGroupItem key={props.props._id}>
+        <ListGroupItem key={props.props._id} className="listStyle">
         <Card className="cardStyle">
             <Card.Header>{props.props.title} {moment(props.props.date).format('MM/DD/YYYY')}</Card.Header>
             <Card.Body>
