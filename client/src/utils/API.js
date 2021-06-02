@@ -43,8 +43,12 @@ export default {
     createPost: function(postInfo) {
         return axios.post("/api/post", postInfo);
     },
-    getAllPosts: function() {
-        return axios.get("/api/post")
+    getAllPosts: function(category) {
+        if (category == '') {
+            return axios.get(`/api/post`)
+        } else {
+            return axios.get(`/api/post?category=${category}`)
+        }
     },
     updatePost: function(id, updatedInfo) {
         return axios.put(`/api/post/${id}`, updatedInfo)
