@@ -15,8 +15,19 @@ import './style.css';
 function Stars() {
   const [starPhotos, setStarPhotos] = useState([]);
   const [starsYT, setStarsYT] = useState([]);
+  const [imagePosts, setImagePosts] = useState([]);
+  const [videoPosts, setVideoPosts] = useState([]);
+
 
   useEffect(() => {
+    API.getAllPosts('Stars')
+      .then((res) => {
+        let sortedPosts = res.data.sort((a, b) => b.likes - a.likes)
+        setImagePosts(sortedPosts.filter(post => post.videoLink == null))
+        setVideoPosts(sortedPosts.filter(post => post.imageLink == null))
+      })
+      .catch((err) => console.error(err))
+
     API.getNASAStars()
       .then(res => setStarPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData, 'Stars'))))
       .catch(err => console.error(err))
@@ -36,23 +47,26 @@ function Stars() {
       </Jumbotron>
       <Container>
         <Row>
-            <p className="descriptionText">
-              Stars are the most widely recognized astronomical objects, and
-              represent the most fundamental building blocks of galaxies. The
-              age, distribution, and composition of the stars in a galaxy trace
-              the history, dynamics, and evolution of that galaxy. Moreover,
-              stars are responsible for the manufacture and distribution of
-              heavy elements such as carbon, nitrogen, and oxygen, and their
-              characteristics are intimately tied to the characteristics of the
-              planetary systems that may coalesce about them. Consequently, the
-              study of the birth, life, and death of stars is central to the
-              field of astronomy.
+          <p className="descriptionText">
+            Stars are the most widely recognized astronomical objects, and
+            represent the most fundamental building blocks of galaxies. The
+            age, distribution, and composition of the stars in a galaxy trace
+            the history, dynamics, and evolution of that galaxy. Moreover,
+            stars are responsible for the manufacture and distribution of
+            heavy elements such as carbon, nitrogen, and oxygen, and their
+            characteristics are intimately tied to the characteristics of the
+            planetary systems that may coalesce about them. Consequently, the
+            study of the birth, life, and death of stars is central to the
+            field of astronomy.
             </p>
         </Row>
         <Row>
           <Col>
             <Card>
               <ListGroup>
+                {videoPosts.map((post) => {
+                  return <Post props={post} isSaved={true}></Post>;
+                })}
                 {starsYT.map((photo) => {
                   return <Post props={photo} isSaved={false}></Post>
                 })}
@@ -63,6 +77,9 @@ function Stars() {
           <Col>
             <Card>
               <ListGroup>
+                {imagePosts.map((post) => {
+                  return <Post props={post} isSaved={true}></Post>;
+                })}
                 {starPhotos.map((photo) => {
                   return <Post props={photo} isSaved={false}></Post>
                 })}

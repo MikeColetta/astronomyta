@@ -42,7 +42,7 @@ function Homepage() {
         setLikedPosts(sortedPosts)
       })
       .catch((err) => console.error(err))
-      
+
     API.getNASAAPOD()
       .then((res) => res.data)
       .then((data) => setApod(data.hdurl || getThumb(data)))
@@ -81,11 +81,22 @@ function Homepage() {
       </Jumbotron>
       <Container className='containerStyle'>
         <Row>
+        <p className="descriptionText">
+        Welcome to North Star! Visit our topic pages to start exploring resources and talking to other teachers! Be sure to come back everyday for some new content!
+        <br></br>
+        <br></br>
+        Be sure to create a profile and log in to save what looks interesting!
+        <br></br>
+        <br></br>
+        Each topic page will have videos and photos provided by NASA (thanks to their API) to show real life examples. Like the videos and images that you think are interesting and they will be saved onto your profile so that they can be viewed at a later date and also seen by other teachers to help spread education about astronomy! Be sure to comment and leave feedback for the videos so that other teachers can quickly see helpful notes about them and engage in conversation.
+        </p>
+        </Row>
+        <Row>
           <Col>
             <Card>
               <h3>Recently Recommended</h3>
               <ListGroup>
-              {likedPosts.map((post) => {
+                {likedPosts.map((post) => {
                   return <Post props={post} isSaved={true}></Post>;
                 })}
               </ListGroup>
@@ -93,7 +104,7 @@ function Homepage() {
           </Col>
           <Col>
             <Card>
-            <h3>Astronomy from NASA</h3>
+              <h3>Astronomy from NASA</h3>
               <ListGroup>
                 {nasaPhotos.map((photo) => {
                   return <Post props={photo} isSaved={false}></Post>;

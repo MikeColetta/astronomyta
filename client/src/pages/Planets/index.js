@@ -16,8 +16,19 @@ import './style.css';
 function Planets() {
   const [planetPhotos, setPlanetPhotos] = useState([]);
   const [planetsYT, setPlanetsYT] = useState([]);
+  const [imagePosts, setImagePosts] = useState([]);
+  const [videoPosts, setVideoPosts] = useState([]);
+
 
   useEffect(() => {
+    API.getAllPosts('Planets')
+      .then((res) => {
+        let sortedPosts = res.data.sort((a, b) => b.likes - a.likes)
+        setImagePosts(sortedPosts.filter(post => post.videoLink == null))
+        setVideoPosts(sortedPosts.filter(post => post.imageLink == null))
+      })
+      .catch((err) => console.error(err))
+
     API.getNASAPlanets()
       .then(res => setPlanetPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData, 'Planets'))))
       .catch(err => console.error(err))
@@ -40,23 +51,26 @@ function Planets() {
         <h1 className="homepageHeader">Planets</h1>
       </Jumbotron>
       <Container>
-        <Row>        
-            <p className="descriptionText">
-              There are more planets than stars in our galaxy. The current count
-              orbiting our star: eight. The inner, rocky planets are Mercury,
-              Venus, Earth and Mars. NASA's newest rover — Perseverance — landed
-              on Mars on Feb. 18, 2021. The outer planets are gas giants Jupiter
-              and Saturn and ice giants Uranus and Neptune. Beyond Neptune, a
-              newer class of smaller worlds called dwarf planets reign,
-              including longtime favorite Pluto. Thousands more planets have
-              been discovered beyond our solar system. Scientists call them
-              exoplanets (exo means "from outside.")
+        <Row>
+          <p className="descriptionText">
+            There are more planets than stars in our galaxy. The current count
+            orbiting our star: eight. The inner, rocky planets are Mercury,
+            Venus, Earth and Mars. NASA's newest rover — Perseverance — landed
+            on Mars on Feb. 18, 2021. The outer planets are gas giants Jupiter
+            and Saturn and ice giants Uranus and Neptune. Beyond Neptune, a
+            newer class of smaller worlds called dwarf planets reign,
+            including longtime favorite Pluto. Thousands more planets have
+            been discovered beyond our solar system. Scientists call them
+            exoplanets (exo means "from outside.")
             </p>
         </Row>
         <Row>
           <Col>
             <Card>
               <ListGroup>
+                {videoPosts.map((post) => {
+                  return <Post props={post} isSaved={true}></Post>;
+                })}
                 {planetsYT.map((photo) => {
                   return <Post props={photo} isSaved={false}></Post>
                 })}
@@ -67,6 +81,9 @@ function Planets() {
           <Col>
             <Card>
               <ListGroup>
+                {imagePosts.map((post) => {
+                  return <Post props={post} isSaved={true}></Post>;
+                })}
                 {planetPhotos.map((photo) => {
                   return <Post props={photo} isSaved={false}></Post>
                 })}
