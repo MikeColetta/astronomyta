@@ -17,12 +17,12 @@ function Comets() {
 
   useEffect(() => {
     API.getNASAComets()
-      .then(res => setCometPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData))))
+      .then(res => setCometPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData, 'Comets'))))
       .catch(err => console.error(err))
 
     API.getYouTubeComets()
       .then(res => {
-        setCometsYT(res.data.items.map(post => createYoutubePost(post)))
+        setCometsYT(res.data.items.map(post => createYoutubePost(post, 'Comets')))
         console.log(res);
       })
       .catch(err => console.error(err))
@@ -55,7 +55,7 @@ function Comets() {
             <Card>
                 <ListGroup>
                   {cometYT.map((photo) => {
-                    return <Post props={photo}></Post>
+                    return <Post props={photo} isSaved={false}></Post>
                   })}
 
                 </ListGroup>
@@ -66,7 +66,7 @@ function Comets() {
             <Card>
               <ListGroup>
                 {cometPhotos.map((photo) => {
-                  return <Post props={photo}></Post>
+                  return <Post props={photo} isSaved={false}></Post>
                 })}
               </ListGroup>
             </Card>

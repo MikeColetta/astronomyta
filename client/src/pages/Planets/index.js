@@ -19,12 +19,12 @@ function Planets() {
 
   useEffect(() => {
     API.getNASAPlanets()
-      .then(res => setPlanetPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData))))
+      .then(res => setPlanetPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData, 'Planets'))))
       .catch(err => console.error(err))
 
     API.getYouTubePlanets()
       .then(res => {
-        setPlanetsYT(res.data.items.map(post => createYoutubePost(post)))
+        setPlanetsYT(res.data.items.map(post => createYoutubePost(post, 'Planets')))
         console.log('\n\n\n\nRESPONSE');
         console.log(res);
       })
@@ -58,7 +58,7 @@ function Planets() {
             <Card>
               <ListGroup>
                 {planetsYT.map((photo) => {
-                  return <Post props={photo}></Post>
+                  return <Post props={photo} isSaved={false}></Post>
                 })}
 
               </ListGroup>
@@ -68,7 +68,7 @@ function Planets() {
             <Card>
               <ListGroup>
                 {planetPhotos.map((photo) => {
-                  return <Post props={photo}></Post>
+                  return <Post props={photo} isSaved={false}></Post>
                 })}
               </ListGroup>
             </Card>

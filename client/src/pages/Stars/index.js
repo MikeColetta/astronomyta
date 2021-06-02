@@ -18,11 +18,11 @@ function Stars() {
 
   useEffect(() => {
     API.getNASAStars()
-      .then(res => setStarPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData))))
+      .then(res => setStarPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData, 'Stars'))))
       .catch(err => console.error(err))
 
     API.getYouTubeStars()
-      .then(res => setStarsYT(res.data.items.map(post => createYoutubePost(post))))
+      .then(res => setStarsYT(res.data.items.map(post => createYoutubePost(post, 'Stars'))))
       .catch(err => console.error(err))
   }, [])
 
@@ -54,7 +54,7 @@ function Stars() {
             <Card>
               <ListGroup>
                 {starsYT.map((photo) => {
-                  return <Post props={photo}></Post>
+                  return <Post props={photo} isSaved={false}></Post>
                 })}
 
               </ListGroup>
@@ -64,7 +64,7 @@ function Stars() {
             <Card>
               <ListGroup>
                 {starPhotos.map((photo) => {
-                  return <Post props={photo}></Post>
+                  return <Post props={photo} isSaved={false}></Post>
                 })}
               </ListGroup>
             </Card>
