@@ -66,23 +66,23 @@ function Post(props) {
         content = <div></div>
     }
     // Check for comment
-    let comments
-    if (props.props.comments) {
-        comments = <div>
-            {props.comments.map((comment) => {
-                return (<Comment props={comment}></Comment>)
-            })}
-        </div>
-    } else {
-        comments = <div></div>
-    }
+    // let comments
+    // if (props.props.comments) {
+    //     comments = <div>
+    //         {props.comments.map((comment) => {
+    //             return (<Comment props={comment}></Comment>)
+    //         })}
+    //     </div>
+    // } else {
+    //     comments = <div></div>
+    // }
     return (
         <ListGroupItem key={props.props._id}>
             <Card className="cardStyle">
                 <Card.Header>{props.props.title} {moment(props.props.date).format('MM/DD/YYYY')}</Card.Header>
                 <Card.Body>
                     {content}
-                    {comments}
+                    {/* {comments} */}
                     <Card.Text>{props.likes}</Card.Text>
                     <Button variant='primary' data-index={props.props} onClick={() => onLike(props.props)}>Recommended: {likes} times!</Button>
                 </Card.Body>
