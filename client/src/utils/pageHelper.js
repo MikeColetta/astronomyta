@@ -1,8 +1,9 @@
-function createYoutubePost(postData) {
+function createYoutubePost(postData, category) {
     return {
       title: postData.snippet.title,
       videoLink: postData.id.videoId,
-      date: postData.snippet.publishedAt
+      date: postData.snippet.publishedAt,
+      category: category
     }
   }
 
