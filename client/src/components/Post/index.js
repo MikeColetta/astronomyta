@@ -98,7 +98,7 @@ function Post(props) {
                             <Col xs='auto'>
                                 <Button
                                     type='button'
-                                    className='mb-2'
+                                    className='mb-2 buttonStyle'
                                     onClick={() => onComment()}
                                 >
                                     Comment
