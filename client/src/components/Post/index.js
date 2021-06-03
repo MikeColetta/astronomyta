@@ -39,9 +39,9 @@ function Post(props) {
             text: commentInput.current.value,
             userId: '123',
         }
-        console.log(props._id)
+        console.log(props.props._id)
         if (props._id) {
-            API.updatePost(props._id, data)
+            API.updatePost(props.props._id, data)
                 .catch(err => console.log(err))
         } else {
             postData.commentTemp = data
@@ -99,8 +99,8 @@ function Post(props) {
                                 <Button
                                     type='button'
                                     className='mb-2'
-                                    onClick={() => onComment()}
-                                >
+                                    onClick={() => onComment(props.props)}
+                                >   
                                     Comment
                                 </Button>
 
