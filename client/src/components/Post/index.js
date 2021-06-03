@@ -8,7 +8,7 @@ import moment from 'moment';
 function Post(props) {
     const [likes, setLikes] = useState(0)
     const postData = props.props;
-    // const commentInput = useRef(null)
+    const commentInput = useRef(null)
 
     useEffect(() => {
         if (props.isSaved) {
@@ -34,23 +34,23 @@ function Post(props) {
     }
 
     // Function for commenting
-    // function onComment() {
+    function onComment() {
 
-    //     let data = {
-    //         text: commentInput,
-    //         userId: '123',
-    //     }
+        let data = {
+            text: commentInput,
+            userId: '123',
+        }
 
-    //     if (props._id) {
-    //         API.updatePost(props._id, data)
-    //             .catch(err => console.log(err))
-    //     } else {
-    //         postData.commentTemp = data
-    //         API.createPost(postData)
-    //             .then()
-    //             .catch(err => console.error(err))
-    //     }
-    // }
+        if (props._id) {
+            API.updatePost(props._id, data)
+                .catch(err => console.log(err))
+        } else {
+            postData.commentTemp = data
+            API.createPost(postData)
+                .then()
+                .catch(err => console.error(err))
+        }
+    }
 
     // Check content type
     let content
@@ -66,27 +66,27 @@ function Post(props) {
         content = <div></div>
     }
     // Check for comment
-    // let comments
-    // if (props.props.comments) {
-    //     comments = <div>
-    //         {props.comments.map((comment) => {
-    //             return (<Comment props={comment}></Comment>)
-    //         })}
-    //     </div>
-    // } else {
-    //     comments = <div></div>
-    // }
+    let comments
+    if (props.props.comments) {
+        comments = (<div>
+            {props.comments.map((comment) => {
+                return (<Comment props={comment}></Comment>)
+            })}
+        </div>)
+    } else {
+        comments = <div></div>
+    }
     return (
         <ListGroupItem key={props.props._id}>
             <Card className="cardStyle">
                 <Card.Header>{props.props.title} {moment(props.props.date).format('MM/DD/YYYY')}</Card.Header>
                 <Card.Body>
                     {content}
-                    {/* {comments} */}
+                    {comments}
                     <Card.Text>{props.likes}</Card.Text>
                     <Button variant='primary' data-index={props.props} onClick={() => onLike(props.props)}>Recommended: {likes} times!</Button>
                 </Card.Body>
-                {/* <Card.Footer style={{backgroundColor:'#4e5861'}}>
+                <Card.Footer style={{backgroundColor:'#4e5861'}}>
                     <Form>
                         <Form.Row className='align-items-center'>
                             <Col xs='auto'>
@@ -109,7 +109,7 @@ function Post(props) {
 
                         </Form.Row>
                     </Form>
-                </Card.Footer> */}
+                </Card.Footer>
             </Card>
         </ListGroupItem>
     )
