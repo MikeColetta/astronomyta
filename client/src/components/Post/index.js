@@ -84,7 +84,7 @@ function Post(props) {
                     {content}
                     {/* {comments} */}
                     <Card.Text>{props.likes}</Card.Text>
-                    <Button variant='primary' data-index={props.props} onClick={() => onLike(props.props)}>Recommended: {likes} times!</Button>
+                    <Button className="buttonStyle" variant='primary' data-index={props.props} onClick={() => onLike(props.props)}>Recommended: {likes} times!</Button>
                 </Card.Body>
                 {/* <Card.Footer style={{backgroundColor:'#4e5861'}}>
                     <Form>
