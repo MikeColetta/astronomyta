@@ -13,19 +13,19 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     create: function(req, res) {
-        // console.log(req.body);
-        // if (!req.body.commentTemp) {
-        //     db.Post.create(req.body)
-        //         .then(dbModel => res.json(dbModel))
-        //         .catch(err => res.status(422).json(err))
-        // } else {
-        //     let commentData = req.body.commentTemp
-        //     let data = req.body
-        //     delete data.commentTemp
-        //     db.Post.create(req.body)
-        //         .then(dbModel => res.json(dbModel))
-        //         .catch(err => res.status(422).json(err))
-        // }
+        console.log(req.body);
+        if (!req.body.commentTemp) {
+            db.Post.create(req.body)
+                .then(dbModel => res.json(dbModel))
+                .catch(err => res.status(422).json(err))
+        } else {
+            let commentData = req.body.commentTemp
+            let data = req.body
+            delete data.commentTemp
+            db.Post.create(req.body)
+                .then(dbModel => res.json(dbModel))
+                .catch(err => res.status(422).json(err))
+        }
         db.Post.create(req.body)
                 .then(dbModel => res.json(dbModel))
                 .catch(err => res.status(422).json(err))

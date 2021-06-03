@@ -35,9 +35,8 @@ function Post(props) {
 
     // Function for commenting
     function onComment() {
-
         let data = {
-            text: commentInput,
+            text: commentInput.current.value,
             userId: '123',
         }
 
@@ -69,7 +68,7 @@ function Post(props) {
     let comments
     if (props.props.comments) {
         comments = (<div>
-            {props.comments.map((comment) => {
+            {props.props.comments.map((comment) => {
                 return (<Comment props={comment}></Comment>)
             })}
         </div>)
@@ -92,7 +91,7 @@ function Post(props) {
                             <Col xs='auto'>
                                 <Form.Control
                                     className='mb-2'
-                                    id={commentInput}
+                                    ref={commentInput}
                                     placeholder='Comment'
                                 />
                             </Col>
