@@ -39,7 +39,7 @@ function Post(props) {
             text: commentInput.current.value,
             userId: '123',
         }
-
+        console.log(props._id)
         if (props._id) {
             API.updatePost(props._id, data)
                 .catch(err => console.log(err))
