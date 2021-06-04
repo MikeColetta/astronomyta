@@ -1,12 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react'
+<<<<<<< HEAD
 import { Card, Button, ListGroupItem, Col, Form} from 'react-bootstrap'
+=======
+import { Card, Button, ListGroupItem, Col, Form, Modal} from 'react-bootstrap'
+>>>>>>> main
 import Comment from '../Comment'
 import API from '../../utils/API'
 import './style.css'
 import moment from 'moment';
+<<<<<<< HEAD
 
 function Post(props) {
     const [likes, setLikes] = useState(0)
+=======
+import LoginModal from "../LoginModal"
+
+function Post(props) {
+    const [likes, setLikes] = useState(0)
+    const [show, setShow] = useState(false)
+>>>>>>> main
     const postData = props.props;
     const commentInput = useRef(null)
 
@@ -30,14 +42,26 @@ function Post(props) {
                 .catch(err => console.error(err))
         }
         else{
+<<<<<<< HEAD
             console.log('You need to login!')
         } 
     }
 
+=======
+        setShow(true)
+        } 
+    }
+
+    function handleClose() {
+        setShow(false)
+    }
+
+>>>>>>> main
     // Function for commenting
     function onComment() {
         let data = {
             text: commentInput.current.value,
+<<<<<<< HEAD
             userId: '123',
         }
         if (props._id) {
@@ -48,6 +72,23 @@ function Post(props) {
             API.createPost(postData)
                 .then()
                 .catch(err => console.error(err))
+=======
+            // userId: '123',
+        }
+        if (props.props._id && props.userId.userId) {
+            console.log(props.props._id)
+            console.log('Updated')
+            API.updatePost(props.props._id, data)
+                .catch(err => console.log(err))
+        } else if (props.userId.userId) {
+            console.log('Created')
+            postData.comments = data
+            API.createPost(postData)
+                .then()
+                .catch(err => console.error(err))
+        } else {
+            setShow(true)
+>>>>>>> main
         }
     }
 
@@ -111,6 +152,10 @@ function Post(props) {
                     </Form>
                 </Card.Footer>
             </Card>
+<<<<<<< HEAD
+=======
+            <LoginModal show={show} handleClose={handleClose}/> 
+>>>>>>> main
         </ListGroupItem>
     )
 }

@@ -34,10 +34,14 @@ const postSchema = new Schema({
         type: Number,
         default: 1
     },
+<<<<<<< HEAD
     comments: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment'
     }
+=======
+    comments: [Comment.schema]
+>>>>>>> main
 })
 
 const Post = mongoose.model('Post', postSchema)
