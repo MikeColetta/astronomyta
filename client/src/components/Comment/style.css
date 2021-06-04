@@ -1,3 +1,8 @@
 .commentText{
-    color: black !important;
+    color: white !important;
+}
+
+.cardStyle {
+    color: white;
+    background-color: #454d55 !important;
 }
