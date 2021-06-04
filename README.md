@@ -18,7 +18,7 @@ Patrick Stutts - [PatrickStutts](https://github.com/PatrickStutts)
 
 ## Description
 
-North Star plans to bring fun and educational information about the cosmos to your fingertips! We want to provide you with images, videos, and news material that is easy to access and ready to share with your class.  
+North Star plans to bring fun and educational information about the cosmos to your fingertips! We want to provide you with images and videos that are easy to access and ready to share with your class.  
 
 ## User Story
 
@@ -41,12 +41,12 @@ So that I can look at my past comments and recommendations.
     
 ## Installation
     
-[Deployed Application](https://astronomy-ta.herokuapp.com/)
+[Deployed Application](https://whispering-depths-08329.herokuapp.com/)
     
 ## Usage
 
-![Screenshot1]()
-![Screenshot2]()
+![Screenshot1](./client/src/assets/images/Screenshot1.JPG)
+![Screenshot2](./client/src/assets/images/Screenshot2.JPG)
 
 ## License
     
