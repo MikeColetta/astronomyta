@@ -7,38 +7,31 @@ import moment from 'moment';
 
 function Post(props) {
     const [likes, setLikes] = useState(0)
-    // const [userId, setUserId] = useState(null)
     const postData = props.props;
     const commentInput = useRef(null)
-
-    // function checkAuth() {
-    //     props.authService.onAuthChange((user) => {
-    //       if (user) {
-    //         setUserId( user.uid );
-    //       }
-    //     });
-    //   }
 
     useEffect(() => {
         if (props.isSaved) {
             setLikes(postData.likes)
         };
-        // checkAuth();
     }, [])
 
     // Function for liking
     function onLike() {
-        if (props.isSaved) {
+        if (props.isSaved && props.userId.userId) {
             API.updatePost(postData._id, { likes: likes + 1 })
+                .then(setLikes(likes + 1))
                 .catch((err) => console.error(err));
         }
-        else {
+        else if (props.userId.userId){
             // let postInfo = p
             API.createPost(postData)
-                .then()
+                .then(setLikes(likes + 1))
                 .catch(err => console.error(err))
         }
-        setLikes(likes + 1)
+        else{
+            console.log('You need to login!')
+        } 
     }
 
     // Function for commenting

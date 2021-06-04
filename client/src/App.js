@@ -16,7 +16,11 @@ import { NavDropdown } from 'react-bootstrap';
 require('dotenv').config();
 
 class App extends Component {
-  state = { userId: null };
+  constructor(props) {
+    super(props)
+    this.state = { userId: null }
+  }
+  // state = { userId: null };
 
   checkAuth() {
     this.props.authService.onAuthChange((user) => {
@@ -33,6 +37,7 @@ class App extends Component {
 
   componentDidMount() {
     this.checkAuth();
+    console.log(this.state.userId)
   }
 
   render() {
@@ -66,12 +71,20 @@ class App extends Component {
             </Nav>
           </Navbar>
           <Switch>
-            <Route exact path='/' component={Homepage} />
-            <Route exact path='/profile' component={Profile} />
-            <Route exact path='/stars' component={Stars} />
-            <Route exact path='/comets' component={Comets} />
-            <Route exact path='/asteroids' component={Asteroids} />
-            <Route exact path='/planets' component={Planets} />
+            <Route exact path='/'
+              render= {() => (<Homepage userId={this.state.userId}/>
+                )}
+              />
+            <Route exact path='/profile' component={Profile}
+              userId={this.state.userId} />
+            <Route exact path='/stars' component={Stars}
+              userId={this.state.userId} />
+            <Route exact path='/comets' component={Comets}
+              userId={this.state.userId} />
+            <Route exact path='/asteroids' component={Asteroids}
+              userId={this.state.userId} />
+            <Route exact path='/planets' component={Planets}
+              userId={this.state.userId} />
             <Route
               exact
               path='/login'
