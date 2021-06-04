@@ -17,8 +17,8 @@ require('dotenv').config();
 
 class App extends Component {
   constructor(props) {
-    super(props)
-    this.state = { userId: null }
+    super(props);
+    this.state = { userId: null };
   }
   // state = { userId: null };
 
@@ -30,6 +30,11 @@ class App extends Component {
     });
   }
 
+  handleLogin = () => {
+    this.props.authService //
+      .login('Google');
+  };
+
   handleLogout = () => {
     this.props.authService.logout();
     this.setState({ userId: null });
@@ -37,7 +42,6 @@ class App extends Component {
 
   componentDidMount() {
     this.checkAuth();
-    console.log(this.state.userId)
   }
 
   render() {
@@ -59,7 +63,7 @@ class App extends Component {
             </Nav>
             <Nav>
               {!this.state.userId && (
-                <Nav.Link fixed='right' href='/login'>
+                <Nav.Link fixed='right' onClick={this.handleLogin}>
                   Login
                 </Nav.Link>
               )}
@@ -71,20 +75,41 @@ class App extends Component {
             </Nav>
           </Navbar>
           <Switch>
-            <Route exact path='/'
-              render= {() => (<Homepage userId={this.state.userId}/>
-                )}
-              />
-            <Route exact path='/profile' component={Profile}
-              userId={this.state.userId} />
-            <Route exact path='/stars' component={Stars}
-              userId={this.state.userId} />
-            <Route exact path='/comets' component={Comets}
-              userId={this.state.userId} />
-            <Route exact path='/asteroids' component={Asteroids}
-              userId={this.state.userId} />
-            <Route exact path='/planets' component={Planets}
-              userId={this.state.userId} />
+            <Route
+              exact
+              path='/'
+              render={() => <Homepage userId={this.state.userId} />}
+            />
+            <Route
+              exact
+              path='/profile'
+              component={Profile}
+              userId={this.state.userId}
+            />
+            <Route
+              exact
+              path='/stars'
+              component={Stars}
+              userId={this.state.userId}
+            />
+            <Route
+              exact
+              path='/comets'
+              component={Comets}
+              userId={this.state.userId}
+            />
+            <Route
+              exact
+              path='/asteroids'
+              component={Asteroids}
+              userId={this.state.userId}
+            />
+            <Route
+              exact
+              path='/planets'
+              component={Planets}
+              userId={this.state.userId}
+            />
             <Route
               exact
               path='/login'
