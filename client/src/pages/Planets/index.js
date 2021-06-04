@@ -51,7 +51,7 @@ function Planets(userId) {
         <h1 className="homepageHeader">Planets</h1>
       </Jumbotron>
       <Container>
-        <Row>
+      <Row>
           <p className="descriptionText">
             There are more planets than stars in our galaxy. The current count
             orbiting our star: eight. The inner, rocky planets are Mercury,
@@ -64,6 +64,8 @@ function Planets(userId) {
             exoplanets (exo means "from outside.")
             </p>
         </Row>
+      </Container>
+      <Container fluid>
         <Row>
           <Col>
             <Card>
