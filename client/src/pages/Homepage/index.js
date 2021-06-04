@@ -78,8 +78,8 @@ function Homepage(userId) {
       >
         <h1 className='homepageHeader'>North Star!</h1>
       </Jumbotron>
-      <Container className='containerStyle'>
-        <Row>
+      <Container>
+      <Row>
         <p className="descriptionText">
         Welcome to North Star! Visit our topic pages to start exploring resources and talking to other teachers! Be sure to come back everyday for some new content!
         <br></br>
@@ -90,6 +90,8 @@ function Homepage(userId) {
         Be sure to create a profile and log in to save what looks interesting!
         </p>
         </Row>
+      </Container>
+      <Container fluid className='containerStyle'>
         <Row>
           <Col>
             <Card>
@@ -112,7 +114,7 @@ function Homepage(userId) {
             </Card>
           </Col>
           <Col>
-            <Card>
+            <Card className="twitterStyle">
               <NasaTwitter />
             </Card>
           </Col>

@@ -14,7 +14,7 @@ function Comment(props) {
 
     return (
         <Card>
-            <Card.Body>
+            <Card.Body className="cardStyle">
                 <Card.Text className='text-muted'>{moment(props.props.date).format('MM/DD/YYYY')}</Card.Text>
                 <Card.Text className='commentText'>{props.props.text}</Card.Text>
             </Card.Body>

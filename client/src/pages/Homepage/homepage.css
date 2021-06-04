@@ -28,3 +28,12 @@ h3 {
 .descriptionText {
     color:white;
 }
+
+.containerStyle {
+    background-color: #292929 !important;
+}
+
+.twitterStyle {
+    border-color: transparent;
+    background-color: #292929 !important;
+}

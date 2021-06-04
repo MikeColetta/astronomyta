@@ -50,7 +50,6 @@ function Asteroids(userId) {
       </Jumbotron>
       <Container>
         <Row>
-
           <p className="descriptionText">
             Asteroids, sometimes called minor planets, are rocky, airless
             remnants left over from the early formation of our solar system
@@ -61,9 +60,10 @@ function Asteroids(userId) {
             miles (530 kilometers) in diameter — to bodies that are less than
             33 feet (10 meters) across. The total mass of all the asteroids
             combined is less than that of Earth's Moon.
-            </p>
-
+          </p>
         </Row>
+      </Container>
+      <Container fluid>
         <Row>
           <Col>
             <Card>

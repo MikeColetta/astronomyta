@@ -48,7 +48,7 @@ function Comets(userId) {
         <h1 className="homepageHeader">Comets</h1>
       </Jumbotron>
       <Container>
-        <Row>
+      <Row>
           <p className="descriptionText">
             Comets are cosmic snowballs of frozen gases, rock and dust that
             orbit the Sun. When frozen, they are the size of a small town.
@@ -60,6 +60,8 @@ function Comets(userId) {
             Cloud.
             </p>
         </Row>
+      </Container>
+      <Container fluid>
         <Row>
           <Col>
             <Card>

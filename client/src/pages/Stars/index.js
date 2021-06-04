@@ -46,7 +46,7 @@ function Stars(userId) {
         <h1 className="homepageHeader">Stars</h1>
       </Jumbotron>
       <Container>
-        <Row>
+      <Row>
           <p className="descriptionText">
             Stars are the most widely recognized astronomical objects, and
             represent the most fundamental building blocks of galaxies. The
@@ -60,6 +60,8 @@ function Stars(userId) {
             field of astronomy.
             </p>
         </Row>
+      </Container>
+      <Container fluid>
         <Row>
           <Col>
             <Card>
