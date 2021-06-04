@@ -11,7 +11,7 @@ import Post from '../../components/Post';
 import { createYoutubePost, createPost } from '../../utils/pageHelper';
 import './style.css';
 
-function Comets() {
+function Comets(userId) {
   const [cometPhotos, setCometPhotos] = useState([]);
   const [cometYT, setCometsYT] = useState([]);
   const [imagePosts, setImagePosts] = useState([]);
@@ -65,10 +65,10 @@ function Comets() {
             <Card>
               <ListGroup>
                 {videoPosts.map((post) => {
-                  return <Post props={post} isSaved={true}></Post>;
+                  return <Post props={post} isSaved={true} userId={userId}></Post>;
                 })}
                 {cometYT.map((photo) => {
-                  return <Post props={photo} isSaved={false}></Post>
+                  return <Post props={photo} isSaved={false} userId={userId}></Post>
                 })}
 
               </ListGroup>
@@ -78,10 +78,10 @@ function Comets() {
             <Card>
               <ListGroup>
                 {imagePosts.map((post) => {
-                  return <Post props={post} isSaved={true}></Post>;
+                  return <Post props={post} isSaved={true} userId={userId}></Post>;
                 })}
                 {cometPhotos.map((photo) => {
-                  return <Post props={photo} isSaved={false}></Post>
+                  return <Post props={photo} isSaved={false} userId={userId}></Post>
                 })}
               </ListGroup>
             </Card>

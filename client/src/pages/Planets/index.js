@@ -13,7 +13,7 @@ import './style.css';
 
 
 
-function Planets() {
+function Planets(userId) {
   const [planetPhotos, setPlanetPhotos] = useState([]);
   const [planetsYT, setPlanetsYT] = useState([]);
   const [imagePosts, setImagePosts] = useState([]);
@@ -69,10 +69,10 @@ function Planets() {
             <Card>
               <ListGroup>
                 {videoPosts.map((post) => {
-                  return <Post props={post} isSaved={true}></Post>;
+                  return <Post props={post} isSaved={true} userId={userId}></Post>;
                 })}
                 {planetsYT.map((photo) => {
-                  return <Post props={photo} isSaved={false}></Post>
+                  return <Post props={photo} isSaved={false} userId={userId}></Post>
                 })}
 
               </ListGroup>
@@ -82,10 +82,10 @@ function Planets() {
             <Card>
               <ListGroup>
                 {imagePosts.map((post) => {
-                  return <Post props={post} isSaved={true}></Post>;
+                  return <Post props={post} isSaved={true} userId={userId}></Post>;
                 })}
                 {planetPhotos.map((photo) => {
-                  return <Post props={photo} isSaved={false}></Post>
+                  return <Post props={photo} isSaved={false} userId={userId}></Post>
                 })}
               </ListGroup>
             </Card>
