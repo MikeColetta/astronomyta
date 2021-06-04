@@ -4,6 +4,7 @@
     background-size: contain;
     background-position: center center;
     background-color: #292929 !important;
+    margin-top: 32px;
 }
 
 .homepageHeader {
@@ -16,4 +17,14 @@
 .listStyle {
     background-color: #343A40 !important;
     color: white;
+}
+
+h3 {
+    color: white;
+    background-color: #343A40;
+    margin-bottom: 0px !important;
+}
+
+.descriptionText {
+    color:white;
 }

@@ -8,20 +8,31 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import cometPhoto from '../../assets/images/Comets.gif';
 import API from '../../utils/API';
 import Post from '../../components/Post';
-import { createYoutubePost, createPost } from '../../utils/pageHelper'
+import { createYoutubePost, createPost } from '../../utils/pageHelper';
+import './style.css';
 
-function Comets() {
+function Comets(userId) {
   const [cometPhotos, setCometPhotos] = useState([]);
   const [cometYT, setCometsYT] = useState([]);
+  const [imagePosts, setImagePosts] = useState([]);
+  const [videoPosts, setVideoPosts] = useState([]);
 
   useEffect(() => {
+    API.getAllPosts('Comets')
+      .then((res) => {
+        let sortedPosts = res.data.sort((a, b) => b.likes - a.likes)
+        setImagePosts(sortedPosts.filter(post => post.videoLink == null))
+        setVideoPosts(sortedPosts.filter(post => post.imageLink == null))
+      })
+      .catch((err) => console.error(err))
+
     API.getNASAComets()
-      .then(res => setCometPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData))))
+      .then(res => setCometPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData, 'Comets'))))
       .catch(err => console.error(err))
 
     API.getYouTubeComets()
       .then(res => {
-        setCometsYT(res.data.items.map(post => createYoutubePost(post)))
+        setCometsYT(res.data.items.map(post => createYoutubePost(post, 'Comets')))
         console.log(res);
       })
       .catch(err => console.error(err))
@@ -38,41 +49,39 @@ function Comets() {
       </Jumbotron>
       <Container>
         <Row>
-          <Card>
-            <h1>Comets</h1>
-          </Card>
-        </Row>
-        <Row>
-          <Card>
-            <p>
-              Comets are cosmic snowballs of frozen gases, rock and dust that
-              orbit the Sun. When frozen, they are the size of a small town.
-              When a comet's orbit brings it close to the Sun, it heats up and
-              spews dust and gases into a giant glowing head larger than most
-              planets. The dust and gases form a tail that stretches away from
-              the Sun for millions of miles. There are likely billions of comets
-              orbiting our Sun in the Kuiper Belt and even more distant Oort
-              Cloud.
+          <p className="descriptionText">
+            Comets are cosmic snowballs of frozen gases, rock and dust that
+            orbit the Sun. When frozen, they are the size of a small town.
+            When a comet's orbit brings it close to the Sun, it heats up and
+            spews dust and gases into a giant glowing head larger than most
+            planets. The dust and gases form a tail that stretches away from
+            the Sun for millions of miles. There are likely billions of comets
+            orbiting our Sun in the Kuiper Belt and even more distant Oort
+            Cloud.
             </p>
-          </Card>
         </Row>
         <Row>
           <Col>
             <Card>
-                <ListGroup>
-                  {cometYT.map((photo) => {
-                    return <Post props={photo}></Post>
-                  })}
+              <ListGroup>
+                {videoPosts.map((post) => {
+                  return <Post props={post} isSaved={true} userId={userId}></Post>;
+                })}
+                {cometYT.map((photo) => {
+                  return <Post props={photo} isSaved={false} userId={userId}></Post>
+                })}
 
-                </ListGroup>
+              </ListGroup>
             </Card>
           </Col>
           <Col>
-            
             <Card>
               <ListGroup>
+                {imagePosts.map((post) => {
+                  return <Post props={post} isSaved={true} userId={userId}></Post>;
+                })}
                 {cometPhotos.map((photo) => {
-                  return <Post props={photo}></Post>
+                  return <Post props={photo} isSaved={false} userId={userId}></Post>
                 })}
               </ListGroup>
             </Card>

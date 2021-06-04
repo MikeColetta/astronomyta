@@ -4,6 +4,12 @@
   }
   .cardStyle {
     color: white;
+    background-color: #454d55 !important;
+  }
+  .listStyle {
     background-color: #343A40 !important;
   }
-
+  .buttonStyle {
+    background-color: #1b8142 !important;
+    border-color: #15552e !important;
+  }
