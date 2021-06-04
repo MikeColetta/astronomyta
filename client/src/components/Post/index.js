@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Card, Button, ListGroupItem, Col, Form} from 'react-bootstrap'
+import { Card, Button, ListGroupItem, Col, Form, Modal} from 'react-bootstrap'
 import Comment from '../Comment'
 import API from '../../utils/API'
 import './style.css'
@@ -30,9 +30,29 @@ function Post(props) {
                 .catch(err => console.error(err))
         }
         else{
-            console.log('You need to login!')
+        loginModal();
         } 
     }
+
+    function loginModal() {
+        const [show, setShow] = useState(false);
+      
+        const handleClose = () => setShow(false);
+      
+        return (            
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>You are not logged in!</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>Please log in to like and comment on posts!</Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+              </Modal.Footer>
+            </Modal>
+        );
+      }
 
     // Function for commenting
     function onComment() {
