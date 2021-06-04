@@ -56,15 +56,21 @@ function Post(props) {
 
     // Function for commenting
     function onComment() {
+        console.log(commentInput.current.value)
         let data = {
             text: commentInput.current.value,
-            userId: '123',
+            // userId: '123',
         }
-        if (props._id) {
+        console.log(data)
+        if (props.props._id) {
+            console.log(props.props._id)
+            console.log('Updated')
             API.updatePost(props.props._id, data)
                 .catch(err => console.log(err))
         } else {
-            postData.commentTemp = data
+            console.log(props.props._id)
+            console.log('Created')
+            postData.comments = data
             API.createPost(postData)
                 .then()
                 .catch(err => console.error(err))
