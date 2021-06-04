@@ -12,7 +12,7 @@ import { createYoutubePost, createPost } from '../../utils/pageHelper';
 import './style.css';
 
 
-function Asteroids() {
+function Asteroids(userId) {
   const [asteroidPhotos, setAsteroidPhotos] = useState([]);
   const [asteroidsYT, setAstroidsYT] = useState([]);
   const [imagePosts, setImagePosts] = useState([]);
@@ -69,10 +69,10 @@ function Asteroids() {
             <Card>
               <ListGroup>
                 {videoPosts.map((post) => {
-                  return <Post props={post} isSaved={true}></Post>;
+                  return <Post props={post} isSaved={true} userId={userId}></Post>;
                 })}
                 {asteroidsYT.map((photo) => {
-                  return <Post props={photo} isSaved={false}></Post>
+                  return <Post props={photo} isSaved={false} userId={userId}></Post>
                 })}
               </ListGroup>
             </Card>
@@ -81,10 +81,10 @@ function Asteroids() {
             <Card>
               <ListGroup>
                 {imagePosts.map((post) => {
-                  return <Post props={post} isSaved={true}></Post>;
+                  return <Post props={post} isSaved={true} userId={userId}></Post>;
                 })}
                 {asteroidPhotos.map((photo) => {
-                  return <Post props={photo} isSaved={false}></Post>
+                  return <Post props={photo} isSaved={false} userId={userId}></Post>
                 })}
               </ListGroup>
             </Card>

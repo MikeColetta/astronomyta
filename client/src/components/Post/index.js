@@ -1,57 +1,62 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Card, Button, ListGroupItem, Col, Form} from 'react-bootstrap'
+import { Card, Button, ListGroupItem, Col, Form, Modal} from 'react-bootstrap'
 import Comment from '../Comment'
 import API from '../../utils/API'
 import './style.css'
 import moment from 'moment';
+import LoginModal from "../LoginModal"
 
 function Post(props) {
     const [likes, setLikes] = useState(0)
-    // const [userId, setUserId] = useState(null)
+    const [show, setShow] = useState(false)
     const postData = props.props;
     const commentInput = useRef(null)
-
-    // function checkAuth() {
-    //     props.authService.onAuthChange((user) => {
-    //       if (user) {
-    //         setUserId( user.uid );
-    //       }
-    //     });
-    //   }
 
     useEffect(() => {
         if (props.isSaved) {
             setLikes(postData.likes)
         };
-        // checkAuth();
     }, [])
 
     // Function for liking
     function onLike() {
-        if (props.isSaved) {
+        if (props.isSaved && props.userId.userId) {
             API.updatePost(postData._id, { likes: likes + 1 })
+                .then(setLikes(likes + 1))
                 .catch((err) => console.error(err));
         }
-        else {
+        else if (props.userId.userId){
             // let postInfo = p
             API.createPost(postData)
-                .then()
+                .then(setLikes(likes + 1))
                 .catch(err => console.error(err))
         }
-        setLikes(likes + 1)
+        else{
+        setShow(true)
+        } 
+    }
+
+    function handleClose() {
+        setShow(false)
     }
 
     // Function for commenting
     function onComment() {
+        console.log(commentInput.current.value)
         let data = {
             text: commentInput.current.value,
-            userId: '123',
+            // userId: '123',
         }
-        if (props._id) {
+        console.log(data)
+        if (props.props._id) {
+            console.log(props.props._id)
+            console.log('Updated')
             API.updatePost(props.props._id, data)
                 .catch(err => console.log(err))
         } else {
-            postData.commentTemp = data
+            console.log(props.props._id)
+            console.log('Created')
+            postData.comments = data
             API.createPost(postData)
                 .then()
                 .catch(err => console.error(err))
@@ -118,6 +123,7 @@ function Post(props) {
                     </Form>
                 </Card.Footer>
             </Card>
+            <LoginModal show={show} handleClose={handleClose}/> 
         </ListGroupItem>
     )
 }

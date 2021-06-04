@@ -12,7 +12,8 @@ import Post from '../../components/Post';
 import { createYoutubePost, createPost } from '../../utils/pageHelper'
 
 
-function Homepage() {
+function Homepage(userId) {
+
   const [apod, setApod] = useState();
   const [nasaYT, setYouTube] = useState();
   const [nasaPhotos, setNasaPhotos] = useState([]);
@@ -34,11 +35,9 @@ function Homepage() {
 
   useEffect(() => {
     //query database here
-
     API.getAllPosts('')
       .then((res) => {
         let sortedPosts = res.data.sort((a, b) => b.likes - a.likes )
-        console.log(sortedPosts);
         setLikedPosts(sortedPosts)
       })
       .catch((err) => console.error(err))
@@ -97,7 +96,7 @@ function Homepage() {
               <h3>Recently Recommended</h3>
               <ListGroup>
                 {likedPosts.map((post) => {
-                  return <Post props={post} isSaved={true}></Post>;
+                  return <Post props={post} isSaved={true} userId={userId}> </Post>;
                 })}
               </ListGroup>
             </Card>
@@ -107,7 +106,7 @@ function Homepage() {
               <h3>Astronomy from NASA</h3>
               <ListGroup>
                 {nasaPhotos.map((photo) => {
-                  return <Post props={photo} isSaved={false}></Post>;
+                  return <Post props={photo} isSaved={false} userId={userId}></Post>;
                 })}
               </ListGroup>
             </Card>

@@ -12,7 +12,7 @@ import { createYoutubePost, createPost } from '../../utils/pageHelper'
 import './style.css';
 
 
-function Stars() {
+function Stars(userId) {
   const [starPhotos, setStarPhotos] = useState([]);
   const [starsYT, setStarsYT] = useState([]);
   const [imagePosts, setImagePosts] = useState([]);
@@ -65,10 +65,10 @@ function Stars() {
             <Card>
               <ListGroup>
                 {videoPosts.map((post) => {
-                  return <Post props={post} isSaved={true}></Post>;
+                  return <Post props={post} isSaved={true} userId={userId}></Post>;
                 })}
                 {starsYT.map((photo) => {
-                  return <Post props={photo} isSaved={false}></Post>
+                  return <Post props={photo} isSaved={false} userId={userId}></Post>
                 })}
 
               </ListGroup>
@@ -78,10 +78,10 @@ function Stars() {
             <Card>
               <ListGroup>
                 {imagePosts.map((post) => {
-                  return <Post props={post} isSaved={true}></Post>;
+                  return <Post props={post} isSaved={true} userId={userId}></Post>;
                 })}
                 {starPhotos.map((photo) => {
-                  return <Post props={photo} isSaved={false}></Post>
+                  return <Post props={photo} isSaved={false} userId={userId}></Post>
                 })}
               </ListGroup>
             </Card>
