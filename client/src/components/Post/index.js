@@ -4,9 +4,11 @@ import Comment from '../Comment'
 import API from '../../utils/API'
 import './style.css'
 import moment from 'moment';
+import LoginModal from "../LoginModal"
 
 function Post(props) {
     const [likes, setLikes] = useState(0)
+    const [show, setShow] = useState(false)
     const postData = props.props;
     const commentInput = useRef(null)
 
@@ -30,29 +32,13 @@ function Post(props) {
                 .catch(err => console.error(err))
         }
         else{
-        loginModal();
+        setShow(true)
         } 
     }
 
-    function loginModal() {
-        const [show, setShow] = useState(false);
-      
-        const handleClose = () => setShow(false);
-      
-        return (            
-            <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton>
-                <Modal.Title>You are not logged in!</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>Please log in to like and comment on posts!</Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-              </Modal.Footer>
-            </Modal>
-        );
-      }
+    function handleClose() {
+        setShow(false)
+    }
 
     // Function for commenting
     function onComment() {
@@ -137,6 +123,7 @@ function Post(props) {
                     </Form>
                 </Card.Footer>
             </Card>
+            <LoginModal show={show} handleClose={handleClose}/> 
         </ListGroupItem>
     )
 }
