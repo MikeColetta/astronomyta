@@ -75,41 +75,28 @@ class App extends Component {
             </Nav>
           </Navbar>
           <Switch>
-            <Route
-              exact
-              path='/'
-              render={() => <Homepage userId={this.state.userId} />}
-            />
-            <Route
-              exact
-              path='/profile'
-              component={Profile}
-              userId={this.state.userId}
-            />
-            <Route
-              exact
-              path='/stars'
-              component={Stars}
-              userId={this.state.userId}
-            />
-            <Route
-              exact
-              path='/comets'
-              component={Comets}
-              userId={this.state.userId}
-            />
-            <Route
-              exact
-              path='/asteroids'
-              component={Asteroids}
-              userId={this.state.userId}
-            />
-            <Route
-              exact
-              path='/planets'
-              component={Planets}
-              userId={this.state.userId}
-            />
+            <Route exact path='/'
+              render= {() => (<Homepage userId={this.state.userId}/>
+                )}
+              />
+            <Route exact path='/planets'
+              render= {() => (<Planets userId={this.state.userId}/>
+                )}
+              />
+            <Route exact path='/stars'
+              render= {() => (<Stars userId={this.state.userId}/>
+                )}
+              />
+              <Route exact path='/comets'
+              render= {() => (<Comets userId={this.state.userId}/>
+                )}
+              />
+              <Route exact path='/asteroids'
+              render= {() => (<Asteroids userId={this.state.userId}/>
+                )}
+              />
+            <Route exact path='/profile' component={Profile}
+              userId={this.state.userId} />
             <Route
               exact
               path='/login'
