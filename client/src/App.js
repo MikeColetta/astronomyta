@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Homepage from './pages/Homepage';
-import Profile from './pages/Profile';
 import Stars from './pages/Stars';
 import Planets from './pages/Planets';
 import Comets from './pages/Comets';
@@ -56,9 +55,7 @@ class App extends Component {
                 <NavDropdown.Item href='/asteroids'>Asteroids</NavDropdown.Item>
                 <NavDropdown.Item href='/planets'>Planets</NavDropdown.Item>
                 <NavDropdown.Item href='/stars'>Stars</NavDropdown.Item>
-                {this.state.userId && (
-                  <NavDropdown.Item href='/profile'>Profile</NavDropdown.Item>
-                )}
+              
               </NavDropdown>
             </Nav>
             <Nav>
@@ -95,8 +92,6 @@ class App extends Component {
               render= {() => (<Asteroids userId={this.state.userId}/>
                 )}
               />
-            <Route exact path='/profile' component={Profile}
-              userId={this.state.userId} />
             <Route
               exact
               path='/login'
