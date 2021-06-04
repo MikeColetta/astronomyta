@@ -1,5 +1,5 @@
-const router = require('express').Router()
-const postController = require('../../controller/postController')
+const router = require('express').Router();
+const postController = require('../../controller/postController');
 
 router.route('/')
     .get(postController.findAll)
@@ -8,3 +8,5 @@ router.route('/')
 router.route('/:id')
     .get(postController.findById)
     .put(postController.update)
+
+module.exports = router;

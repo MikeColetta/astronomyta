@@ -1,6 +1,5 @@
 module.exports = {
-    CommentModel: require('./Comment'),
-    PostModel: require('./Post'),
+    Comment: require('./Comment'),
+    Post: require('./Post'),
     User: require('./users'),
-    Liked: require('./liked')
 }

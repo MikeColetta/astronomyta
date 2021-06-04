@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const User = require('./users')
 
 const commentModel = new Schema({
     id: {
@@ -9,17 +8,20 @@ const commentModel = new Schema({
         primaryKey: true,
         autoIncrement: true
     },
-    user: User,
     text: {
         type: String,
         required: true
     },
     date: {
         type: Date, default: Date.now
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 
 })
 
-const CommentModel = mongoose.model('CommentModel', commentModel)
+const Comment = mongoose.model('Comment', commentModel)
 
-module.exports = CommentModel
+module.exports = Comment

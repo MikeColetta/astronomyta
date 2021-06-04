@@ -22,3 +22,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.nav-item .dropdown-menu {
+  background: #2a2e33;
+}
+
+.nav-item .dropdown-item {
+  color: #ffffff;
+}

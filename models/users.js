@@ -8,20 +8,16 @@ const userSchema = new Schema({
         primaryKey: true,
         autoIncrement: true,
       },
-      name: {
+      username: {
         type: String,
-        allowNull: false,
+
       },
       email: {
         type: String,
-        allowNull: false,
-        unique: true,
-        isEmail: true,
+
       },
       password: {
         type: String,
-        allowNull: false,
-        minLength:[8, 'Password too short!'],
       },
 });
 

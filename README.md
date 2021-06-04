@@ -1,31 +1,61 @@
-# AstronomyTA
+# North Star
 
-# Create React Express App
+![GitHub](https://img.shields.io/github/license/MikeColetta/astronomyta)
 
-## About This Boilerplate
+## Team
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+Colin Bell - [cobell206](https://github.com/cobell206)
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+Mike Coletta - [MikeColetta](https://github.com/MikeColetta)
 
-## Starting the app locally
+Debasu Eyasu - [bayleyegn100](https://github.com/bayleyegn100)
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+Haram Kwon - [kharam](https://github.com/kharam)
 
-```
-npm install
-```
+Parm Singh - [parmbir21](https://github.com/parmbir21)
 
-This should install node modules within the server and the client folder.
+Patrick Stutts - [PatrickStutts](https://github.com/PatrickStutts)
 
-After both installations complete, run the following command in your terminal:
+## Description
 
-```
-npm start
-```
+North Star plans to bring fun and educational information about the cosmos to your fingertips! We want to provide you with images, videos, and news material that is easy to access and ready to share with your class.  
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+## User Story
 
-## Deployment (Heroku)
+As a user looking for Astronomy resources,
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+I want to find a resource from NASA or YouTube,
+
+I also want to recommend and comment on those resources,
+
+I also want those resources saved to my profile,
+
+So that I can look at my past comments and recommendations.
+    
+## Table of Contents
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [License](#license)
+4. [Questions](#questions)
+5. [Credits](#credits)
+    
+## Installation
+    
+[Deployed Application](https://astronomy-ta.herokuapp.com/)
+    
+## Usage
+
+![Screenshot1]()
+![Screenshot2]()
+
+## License
+    
+MIT License
+    
+Copyright (c) 2021
+          
+## Questions?
+    
+[Github]()
+  
+For any questions, please send me an [email](mailto:jdoe53736@gmail.com).
