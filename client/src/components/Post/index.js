@@ -42,24 +42,23 @@ function Post(props) {
 
     // Function for commenting
     function onComment() {
-        console.log(commentInput.current.value)
         let data = {
             text: commentInput.current.value,
             // userId: '123',
         }
-        console.log(data)
-        if (props.props._id) {
+        if (props.props._id && props.userId.userId) {
             console.log(props.props._id)
             console.log('Updated')
             API.updatePost(props.props._id, data)
                 .catch(err => console.log(err))
-        } else {
-            console.log(props.props._id)
+        } else if (props.userId.userId) {
             console.log('Created')
             postData.comments = data
             API.createPost(postData)
                 .then()
                 .catch(err => console.error(err))
+        } else {
+            setShow(true)
         }
     }
 
