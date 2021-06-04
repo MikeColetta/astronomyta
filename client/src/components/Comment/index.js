@@ -6,17 +6,16 @@ function Comment(props) {
     const [data, setData] = useState()
 
     useEffect(() => {
-
+        console.log(props)
     })
 
 
 
     return (
         <Card>
-            <Card.Header>{props.user}</Card.Header>
             <Card.Body>
-                <Card.Text className='text-muted'>{props.date}</Card.Text>
-                <Card.Text>{props.comment}</Card.Text>
+                {/* <Card.Text className='text-muted'>{props.props.date}</Card.Text> */}
+                <Card.Text>{props.text}</Card.Text>
             </Card.Body>
         </Card>
     )
