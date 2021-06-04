@@ -8,6 +8,7 @@
 
 .homepageHeader {
     color: white;
+    font-size: 80px;
 }
 
 .pageStyle {
@@ -16,4 +17,5 @@
 
 .descriptionText {
     color:white;
+    text-align: justify;
 }
