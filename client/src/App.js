@@ -17,8 +17,8 @@ require('dotenv').config();
 
 class App extends Component {
   constructor(props) {
-    super(props)
-    this.state = { userId: null }
+    super(props);
+    this.state = { userId: null };
   }
   // state = { userId: null };
 
@@ -29,6 +29,11 @@ class App extends Component {
       }
     });
   }
+
+  handleLogin = () => {
+    this.props.authService //
+      .login('Google');
+  };
 
   handleLogout = () => {
     this.props.authService.logout();
@@ -58,7 +63,7 @@ class App extends Component {
             </Nav>
             <Nav>
               {!this.state.userId && (
-                <Nav.Link fixed='right' href='/login'>
+                <Nav.Link fixed='right' onClick={this.handleLogin}>
                   Login
                 </Nav.Link>
               )}
