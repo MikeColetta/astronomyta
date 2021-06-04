@@ -34,10 +34,7 @@ const postSchema = new Schema({
         type: Number,
         default: 1
     },
-    comments: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment'
-    }
+    comments: [Comment.schema]
 })
 
 const Post = mongoose.model('Post', postSchema)
