@@ -7,19 +7,27 @@ import moment from 'moment';
 
 function Post(props) {
     const [likes, setLikes] = useState(0)
+    // const [userId, setUserId] = useState(null)
     const postData = props.props;
     const commentInput = useRef(null)
+
+    // function checkAuth() {
+    //     props.authService.onAuthChange((user) => {
+    //       if (user) {
+    //         setUserId( user.uid );
+    //       }
+    //     });
+    //   }
 
     useEffect(() => {
         if (props.isSaved) {
             setLikes(postData.likes)
         };
-
+        // checkAuth();
     }, [])
 
     // Function for liking
     function onLike() {
-        console.log({ postData })
         if (props.isSaved) {
             API.updatePost(postData._id, { likes: likes + 1 })
                 .catch((err) => console.error(err));
@@ -39,7 +47,6 @@ function Post(props) {
             text: commentInput.current.value,
             userId: '123',
         }
-        console.log(props.props._id)
         if (props._id) {
             API.updatePost(props.props._id, data)
                 .catch(err => console.log(err))
