@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Card, Button, ListGroupItem, Col, Form} from 'react-bootstrap'
+import { Card, Button, ListGroupItem, Col, Form, Modal} from 'react-bootstrap'
 import Comment from '../Comment'
 import API from '../../utils/API'
 import './style.css'
 import moment from 'moment';
+import LoginModal from "../LoginModal"
 
 function Post(props) {
     const [likes, setLikes] = useState(0)
+    const [show, setShow] = useState(false)
     const postData = props.props;
     const commentInput = useRef(null)
 
@@ -30,8 +32,12 @@ function Post(props) {
                 .catch(err => console.error(err))
         }
         else{
-            console.log('You need to login!')
+        setShow(true)
         } 
+    }
+
+    function handleClose() {
+        setShow(false)
     }
 
     // Function for commenting
@@ -117,6 +123,7 @@ function Post(props) {
                     </Form>
                 </Card.Footer>
             </Card>
+            <LoginModal show={show} handleClose={handleClose}/> 
         </ListGroupItem>
     )
 }
