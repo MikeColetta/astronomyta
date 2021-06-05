@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Card, Button, ListGroupItem, Col, Form, Modal} from 'react-bootstrap'
-import Comment from '../Comment'
+import React, { useState, useEffect, } from 'react'
+import { Card, Button, ListGroupItem} from 'react-bootstrap'
+// import Comment from '../Comment'
 import API from '../../utils/API'
 import './style.css'
 import moment from 'moment';
@@ -10,7 +10,7 @@ function Post(props) {
     const [likes, setLikes] = useState(0)
     const [show, setShow] = useState(false)
     const postData = props.props;
-    const commentInput = useRef(null)
+    // const commentInput = useRef(null)
 
     useEffect(() => {
         if (props.isSaved) {
@@ -20,20 +20,20 @@ function Post(props) {
 
     // Function for liking
     function onLike() {
-        if (props.isSaved && props.userId.userId) {
-            API.updatePost(postData._id, { likes: likes + 1 })
-                .then(setLikes(likes + 1))
-                .catch((err) => console.error(err));
-        }
-        else if (props.userId.userId){
-            // let postInfo = p
-            API.createPost(postData)
-                .then(setLikes(likes + 1))
-                .catch(err => console.error(err))
-        }
-        else{
-        setShow(true)
-        } 
+            if (props.isSaved && props.userId.userId) {
+                API.updatePost(postData._id, { likes: likes + 1 })
+                    .then(setLikes(likes + 1))
+                    .catch((err) => console.error(err));
+            }
+            else if (props.userId.userId) {
+                // let postInfo = p
+                API.createPost(postData)
+                    .then(setLikes(likes + 1))
+                    .catch(err => console.error(err))
+            }
+            else {
+                setShow(true)
+            }
     }
 
     function handleClose() {
@@ -41,26 +41,26 @@ function Post(props) {
     }
 
     // Function for commenting
-    function onComment() {
-        let data = {
-            text: commentInput.current.value,
-            // userId: '123',
-        }
-        if (props.props._id && props.userId.userId) {
-            console.log(props.props._id)
-            console.log('Updated')
-            API.updatePost(props.props._id, data)
-                .catch(err => console.log(err))
-        } else if (props.userId.userId) {
-            console.log('Created')
-            postData.comments = data
-            API.createPost(postData)
-                .then()
-                .catch(err => console.error(err))
-        } else {
-            setShow(true)
-        }
-    }
+    // function onComment() {
+    //     let data = {
+    //         text: commentInput.current.value,
+    //         // userId: '123',
+    //     }
+    //     if (props.props._id && props.userId.userId) {
+    //         console.log(props.props._id)
+    //         console.log('Updated')
+    //         API.updatePost(props.props._id, data)
+    //             .catch(err => console.log(err))
+    //     } else if (props.userId.userId) {
+    //         console.log('Created')
+    //         postData.comments = data
+    //         API.createPost(postData)
+    //             .then()
+    //             .catch(err => console.error(err))
+    //     } else {
+    //         setShow(true)
+    //     }
+    // }
 
     // Check content type
     let content
@@ -76,28 +76,28 @@ function Post(props) {
         content = <div></div>
     }
     // Check for comment
-    let comments
-    if (props.props.comments) {
-        comments = (<div>
-            {props.props.comments.map((comment) => {
-                return (<Comment props={comment}></Comment>)
-            })}
-        </div>)
-    } else {
-        comments = <div></div>
-    }
+    // let comments
+    // if (props.props.comments) {
+    //     comments = (<div>
+    //         {props.props.comments.map((comment) => {
+    //             return (<Comment props={comment}></Comment>)
+    //         })}
+    //     </div>)
+    // } else {
+    //     comments = <div></div>
+    // }
     return (
         <ListGroupItem key={props.props._id} className="listStyle">
             <Card className="cardStyle">
                 <Card.Header>{props.props.title} {moment(props.props.date).format('MM/DD/YYYY')}</Card.Header>
                 <Card.Body>
                     {content}
-                    {comments}
+                    {/* {comments} */}
                     <Card.Text>{props.likes}</Card.Text>
                     <Button className="buttonStyle" variant='primary' data-index={props.props} onClick={() => onLike(props.props)}>Recommended: {likes} times!</Button>
                 </Card.Body>
-                <Card.Footer style={{backgroundColor:'#4e5861'}}>
-                    <Form>
+                <Card.Footer style={{ backgroundColor: '#4e5861' }}>
+                    {/* <Form>
                         <Form.Row className='align-items-center'>
                             <Col xs='auto'>
                                 <Form.Control
@@ -112,17 +112,17 @@ function Post(props) {
 
                                     className='mb-2 buttonStyle'
                                     onClick={() => onComment(props.props)}
-                                >   
+                                >
                                     Comment
                                 </Button>
 
                             </Col>
 
                         </Form.Row>
-                    </Form>
+                    </Form> */}
                 </Card.Footer>
             </Card>
-            <LoginModal show={show} handleClose={handleClose}/> 
+            <LoginModal show={show} handleClose={handleClose} />
         </ListGroupItem>
     )
 }

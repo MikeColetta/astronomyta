@@ -37,10 +37,18 @@ module.exports = {
     update: function (req, res) {
         console.log(req.body)
         let filter = { _id: req.params.id }
-        let update = { $push: { comments: req.body } }
-        // let update = req.body
-        db.Post.findByIdAndUpdate(filter, update, { new: true })
+        db.Post.findByIdAndUpdate(filter, req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
+    //Comment update
+    // update: function (req, res) {
+    //     console.log(req.body)
+    //     let filter = { _id: req.params.id }
+    //     let update = { $push: { comments: req.body } }
+    //     // let update = req.body
+    //     db.Post.findByIdAndUpdate(filter, update, { new: true })
+    //         .then(dbModel => res.json(dbModel))
+    //         .catch(err => res.status(422).json(err))
+    // },
 };
