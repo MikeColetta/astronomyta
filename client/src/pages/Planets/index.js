@@ -30,7 +30,7 @@ function Planets(userId) {
       .catch((err) => console.error(err))
 
     API.getNASAPlanets()
-      .then(res => setPlanetPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData, 'Planets'))))
+      .then(res => setPlanetPhotos(res.data.collection.items.slice(0, 10).map(postData => createPost(postData, 'Planets'))))
       .catch(err => console.error(err))
 
     API.getYouTubePlanets()
