@@ -55,7 +55,7 @@ function Homepage(userId) {
       .then((res) =>
         setNasaPhotos(
           res.data.collection.items
-            .slice(0, 5)
+            .slice(0, 10)
             .map((postData) => createPost(postData))
         )
       )

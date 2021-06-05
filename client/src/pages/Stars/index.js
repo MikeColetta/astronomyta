@@ -29,7 +29,7 @@ function Stars(userId) {
       .catch((err) => console.error(err))
 
     API.getNASAStars()
-      .then(res => setStarPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData, 'Stars'))))
+      .then(res => setStarPhotos(res.data.collection.items.slice(0, 10).map(postData => createPost(postData, 'Stars'))))
       .catch(err => console.error(err))
 
     API.getYouTubeStars()

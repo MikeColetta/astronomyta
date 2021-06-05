@@ -27,7 +27,7 @@ function Comets(userId) {
       .catch((err) => console.error(err))
 
     API.getNASAComets()
-      .then(res => setCometPhotos(res.data.collection.items.slice(0, 5).map(postData => createPost(postData, 'Comets'))))
+      .then(res => setCometPhotos(res.data.collection.items.slice(0, 10).map(postData => createPost(postData, 'Comets'))))
       .catch(err => console.error(err))
 
     API.getYouTubeComets()
